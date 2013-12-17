@@ -1,0 +1,15 @@
+name = Site settings
+description = Strongarm variables for site
+core = 7.x
+package = Features
+dependencies[] = ctools
+dependencies[] = strongarm
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[variable][] = admin_menu_margin_top
+features[variable][] = admin_theme
+features[variable][] = adminimal_admin_menu_render
+features[variable][] = clean_url
+features[variable][] = site_name
+features[variable][] = theme_default
+project path = sites/all/modules/features
