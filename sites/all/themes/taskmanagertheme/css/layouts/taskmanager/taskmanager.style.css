@@ -1,0 +1,21 @@
+/*******************************************************************************
+ * taskmanager.style.scss
+ * Style theming
+ ******************************************************************************/
+body {
+  background-color: #f9f9f7;
+}
+
+.l-main .l-column-container .l-region--column01 .task,
+.l-main .l-column-container .l-region--column02 .task,
+.l-main .l-column-container .l-region--column03 .task {
+  background-color: #f8f8f8;
+  border-color: #fbf9f4;
+  box-shadow: 0 1px 4px 0 #ccc;
+}
+
+.l-main .l-column-container .l-region--column01 .task:nth-child(even),
+.l-main .l-column-container .l-region--column02 .task:nth-child(odd),
+.l-main .l-column-container .l-region--column03 .task:nth-child(even) {
+  background-color: #fbfbfb;
+}
