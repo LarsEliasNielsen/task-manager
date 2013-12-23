@@ -53,7 +53,11 @@
   height: 100%;
   position: fixed;
   right: 0;
-  top: 147px;
+  top: 118px;
+}
+
+body.logged-in .l-sidebar {
+  top: 147px; /* accounting for admin menu */
 }
 
 .l-header:after,
