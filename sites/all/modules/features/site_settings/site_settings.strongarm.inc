@@ -41,6 +41,30 @@ function site_settings_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'overlay_paths_ui_paths';
+  $strongarm->value = array(
+    'content/*' => array(
+      'width' => '700px',
+    ),
+    'admin/*' => FALSE,
+    'node/add' => FALSE,
+  );
+  $export['overlay_paths_ui_paths'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'overlay_theme';
+  $strongarm->value = array(
+    'theme' => 'taskedittheme',
+    'visibility' => '1',
+    'pages' => 'content/*',
+  );
+  $export['overlay_theme'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'site_name';
   $strongarm->value = 'task-manager';
   $export['site_name'] = $strongarm;

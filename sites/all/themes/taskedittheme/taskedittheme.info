@@ -1,0 +1,19 @@
+name = TaskEditTheme
+description = Please provide a description for your theme.
+base theme = omega
+screenshot = screenshot.png
+engine = phptemplate
+core = 7.x
+
+; ========================================
+; Stylesheets
+; ========================================
+stylesheets[all][] = css/taskedittheme.normalize.css
+stylesheets[all][] = css/taskedittheme.hacks.css
+stylesheets[all][] = css/taskedittheme.styles.css
+stylesheets[all][] = css/taskedittheme.no-query.css
+
+; ========================================
+; Scripts
+; ========================================
+scripts[] = js/taskedittheme.behaviors.js
