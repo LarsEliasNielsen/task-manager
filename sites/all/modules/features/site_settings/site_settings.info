@@ -11,6 +11,7 @@ features[variable][] = admin_theme
 features[variable][] = adminimal_admin_menu_render
 features[variable][] = clean_url
 features[variable][] = overlay_paths_ui_paths
+features[variable][] = overlay_theme
 features[variable][] = site_name
 features[variable][] = theme_default
 project path = sites/all/modules/features
