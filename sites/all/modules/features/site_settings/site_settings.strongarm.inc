@@ -56,7 +56,7 @@ function site_settings_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'overlay_theme';
   $strongarm->value = array(
-    'theme' => 'taskmanagertheme',
+    'theme' => 'taskedittheme',
     'visibility' => '1',
     'pages' => 'content/*',
   );
