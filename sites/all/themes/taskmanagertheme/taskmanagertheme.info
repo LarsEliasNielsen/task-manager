@@ -23,6 +23,11 @@ stylesheets[all][] = css/taskmanagertheme.styles.css
 stylesheets[all][] = css/taskmanagertheme.no-query.css
 
 ; ========================================
+; Ionicons (http://ionicons.com/)
+; ========================================
+stylesheets[all][] = css/ionicons.css
+
+; ========================================
 ; Scripts
 ; ========================================
 scripts[] = js/taskmanagertheme.behaviors.js

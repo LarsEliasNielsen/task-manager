@@ -49,11 +49,26 @@
 
 .l-sidebar {
   *zoom: 1; /* IE 7 and below hack */
-  width: 250px;
+  width: 230px;
   height: 100%;
   position: fixed;
   right: 0;
   top: 118px;
+}
+
+.l-sidebar-toggle {
+  *zoom: 1; /* IE 7 and below hack */
+  width: 20px;
+  height: 100%;
+  position: fixed;
+  top: 147px;
+  right: 230px;
+}
+
+.ion-chevron-up {
+  margin: auto;
+  position: absolute;
+  top: 40%; left: 30%;
 }
 
 body.logged-in .l-sidebar {
