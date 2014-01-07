@@ -25,7 +25,7 @@
   </header>
 
   
-  <div class="l-main" role="main">
+  <div class="l-main" id="main" role="main">
     <div class="l-column-container">
       <?php print $messages; ?>
       <?php print render($tabs); ?>
@@ -38,7 +38,10 @@
       <?php print $feed_icons; ?>
     </div>
   </div>
-  <div class="l-sidebar" role="">
+  <div class="l-sidebar" id="sidebar">
     <?php print render($page['sidebar']); ?>
+  </div>
+  <div class="l-sidebar-toggle" id="sidebar-toggle">
+    <i class="ion ion-chevron-up" id="ion-chevron-up"></i>
   </div>
 </div>
