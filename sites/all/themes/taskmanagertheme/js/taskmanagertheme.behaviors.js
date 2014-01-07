@@ -38,21 +38,44 @@
    *   Drupal.settings directly you should use this because of potential
    *   modifications made by the Ajax callback that also produced 'context'.
    */
-  Drupal.behaviors.taskmanagerthemeExampleBehavior = {
+
+  Drupal.behaviors.taskmanagerthemeSidebar = {
     attach: function (context, settings) {
       // By using the 'context' variable we make sure that our code only runs on
       // the relevant HTML. Furthermore, by using jQuery.once() we make sure that
       // we don't run the same piece of code for an HTML snippet that we already
-      // processed previously. By using .once('foo') all processed elements will
-      // get tagged with a 'foo-processed' class, causing all future invocations
+      // processed previously. By using .once('sidebar') all processed elements will
+      // get tagged with a 'sidebar-processed' class, causing all future invocations
       // of this behavior to ignore them.
-      $('.some-selector', context).once('foo', function () {
-        // Now, we are invoking the previously declared theme function using two
-        // settings as arguments.
-        var $anchor = Drupal.theme('taskmanagerthemeExampleButton', settings.myExampleLinkPath, settings.myExampleLinkTitle);
 
-        // The anchor is then appended to the current element.
-        $anchor.appendTo(this);
+      $('#sidebar', context).once('sidebar', function () {
+        // CLICK
+        $('#sidebar-toggle').click(function() {
+          // sidebar
+          var $sidebar = $('#sidebar');
+          $sidebar.animate({
+            right: parseInt($sidebar.css('right'),10) == 0 ?
+              -$sidebar.outerWidth() :
+              0
+          }, 100);
+          // sidebartoggle
+          var $sidebartoggle = $('#sidebar-toggle');
+          $sidebartoggle.animate({
+            right: parseInt($sidebartoggle.css('right'),10) == 0 ?
+              230 :
+              0
+          }, 100);
+          // main
+          var $main = $('#main');
+          $main.animate({
+            paddingRight: parseInt($main.css('padding-right'),10) == 0 ?
+              250 :
+              0
+          }, 100);
+          // rotate
+          var $rotate = $('#ion-chevron-up');
+          $rotate.toggleClass('sidebar-collapsed');
+        });
       });
     }
   };
