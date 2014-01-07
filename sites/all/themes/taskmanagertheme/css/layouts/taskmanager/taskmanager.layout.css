@@ -61,8 +61,8 @@
   width: 20px;
   height: 100%;
   position: fixed;
-  top: 147px;
   right: 230px;
+  top: 118px;
 }
 
 .ion-chevron-up {
@@ -71,7 +71,8 @@
   top: 40%; left: 30%;
 }
 
-body.logged-in .l-sidebar {
+body.logged-in .l-sidebar,
+body.logged-in .l-sidebar-toggle {
   top: 147px; /* accounting for admin menu */
 }
 
