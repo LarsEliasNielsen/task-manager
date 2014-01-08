@@ -39,7 +39,7 @@
    *   modifications made by the Ajax callback that also produced 'context'.
    */
 
-  Drupal.behaviors.taskmanagerthemeSidebar = {
+  Drupal.behaviors.taskmanagerthemeInit = {
     attach: function (context, settings) {
       // By using the 'context' variable we make sure that our code only runs on
       // the relevant HTML. Furthermore, by using jQuery.once() we make sure that
@@ -48,7 +48,42 @@
       // get tagged with a 'sidebar-processed' class, causing all future invocations
       // of this behavior to ignore them.
 
-      $('#sidebar', context).once('sidebar', function () {
+      $('.tabledrag-handle', context).once('tm-init', function () {
+        // handle
+        var $handle = $('.tabledrag-handle .handle');
+        $handle.replaceWith('<i class="ion ion-ios7-more"></i>');
+      });
+    }
+  }
+
+  Drupal.behaviors.taskmanagerthemeHover = {
+    attach: function (context, settings) {
+
+      $('#draggableviews-table-columns-backlog', context).once('tm-hover', function () {
+        // task
+        var $task = $('#draggableviews-table-columns-backlog tr.draggable');
+        // initially hidden
+        $task.find('.ion-ios7-more').hide();
+        $task.find('a').css('margin-left', '10px');
+        // hover
+        $task.hover(
+          function () {
+            $(this).find('.ion-ios7-more').show();
+            $(this).find('a').css('margin-left', '0');
+          }, 
+          function () {
+            $(this).find('.ion-ios7-more').hide();
+            $(this).find('a').css('margin-left', '10px');
+          }
+        );
+      });
+    }
+  }
+
+  Drupal.behaviors.taskmanagerthemeSidebar = {
+
+    attach: function (context, settings) {
+      $('#sidebar', context).once('tm-sidebar', function () {
         // CLICK
         $('#sidebar-toggle').click(function() {
           // sidebar
