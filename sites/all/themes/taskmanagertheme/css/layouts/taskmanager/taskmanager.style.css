@@ -35,6 +35,15 @@ body {
   transform: rotate(90deg);
 }
 
+.ion-ios7-more {
+  color: #808080;
+  -moz-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
 .sidebar-collapsed {
   -moz-transform: rotate(-90deg);
   -webkit-transform: rotate(-90deg);
@@ -43,7 +52,7 @@ body {
   transform: rotate(-90deg);
 }
 
-.l-main .l-column-container .view-display-id-backlog .views-row,
+.l-main .l-column-container .view-display-id-backlog #draggableviews-table-columns-backlog tr.draggable,
 .l-main .l-column-container .view-display-id-current .views-row,
 .l-main .l-column-container .view-display-id-done .views-row {
   background-color: #f8f8f8;
@@ -51,8 +60,12 @@ body {
   box-shadow: 0 1px 4px 0 #ccc;
 }
 
-.l-main .l-column-container .view-display-id-backlog .views-row:nth-child(even),
+.l-main .l-column-container .view-display-id-backlog #draggableviews-table-columns-backlog tr.draggable:nth-child(even),
 .l-main .l-column-container .view-display-id-current .views-row:nth-child(odd),
 .l-main .l-column-container .view-display-id-done .views-row:nth-child(even) {
   background-color: #fbfbfb;
+}
+
+.l-main .l-column-container .view-display-id-backlog #draggableviews-table-columns-backlog tr.draggable {
+  display: block;
 }
