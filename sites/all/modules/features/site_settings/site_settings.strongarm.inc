@@ -43,7 +43,10 @@ function site_settings_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'overlay_paths_ui_paths';
   $strongarm->value = array(
-    'content/*' => array(
+    'task/*' => array(
+      'width' => '700px',
+    ),
+    'node/*' => array(
       'width' => '700px',
     ),
     'admin/*' => FALSE,
@@ -58,7 +61,8 @@ function site_settings_strongarm() {
   $strongarm->value = array(
     'theme' => 'taskedittheme',
     'visibility' => '1',
-    'pages' => 'content/*',
+    'pages' => 'task/*
+node/*',
   );
   $export['overlay_theme'] = $strongarm;
 
@@ -68,6 +72,20 @@ function site_settings_strongarm() {
   $strongarm->name = 'site_name';
   $strongarm->value = 'task-manager';
   $export['site_name'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'subpathauto_depth';
+  $strongarm->value = '1';
+  $export['subpathauto_depth'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'subpathauto_ignore_admin';
+  $strongarm->value = 0;
+  $export['subpathauto_ignore_admin'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
