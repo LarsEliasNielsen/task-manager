@@ -38,23 +38,39 @@
    *   Drupal.settings directly you should use this because of potential
    *   modifications made by the Ajax callback that also produced 'context'.
    */
-  Drupal.behaviors.taskeditthemeExampleBehavior = {
+
+  Drupal.behaviors.taskeditthemeInit = {
     attach: function (context, settings) {
       // By using the 'context' variable we make sure that our code only runs on
       // the relevant HTML. Furthermore, by using jQuery.once() we make sure that
       // we don't run the same piece of code for an HTML snippet that we already
-      // processed previously. By using .once('foo') all processed elements will
-      // get tagged with a 'foo-processed' class, causing all future invocations
+      // processed previously. By using .once('tet-init') all processed elements will
+      // get tagged with a 'tet-init-processed' class, causing all future invocations
       // of this behavior to ignore them.
-      $('.some-selector', context).once('foo', function () {
-        // Now, we are invoking the previously declared theme function using two
-        // settings as arguments.
-        var $anchor = Drupal.theme('taskeditthemeExampleButton', settings.myExampleLinkPath, settings.myExampleLinkTitle);
+      // 'tet' is a alias for task edit theme
 
-        // The anchor is then appended to the current element.
-        $anchor.appendTo(this);
+      // overlay container
+      var $overlaycontainer = window.parent.document.getElementById('overlay-container');
+
+      $($overlaycontainer, context).once('tet-init', function () {
+        // CLICK ON BG
+        $('#overlay-close-bg').not('#overlay').click(function (event) {
+          // prevent parent elements from triggering
+          event.stopPropagation();
+          // simulated click on close
+          $('#overlay-close').click();
+        });
+        // ESC KEYPRESS
+        $(document).keydown(function(event) {
+          if(event.which == 27) {
+          // prevent default event from triggering
+          event.preventDefault;
+          event.stopPropagation();
+          $('#overlay-close').click();
+          }
+        });
       });
     }
-  };
+  }
 
 })(jQuery);
