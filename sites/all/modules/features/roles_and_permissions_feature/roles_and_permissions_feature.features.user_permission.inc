@@ -83,6 +83,15 @@ function roles_and_permissions_feature_user_default_permissions() {
     'module' => 'comment',
   );
 
+  // Exported permission: 'administer taxonomy'.
+  $permissions['administer taxonomy'] = array(
+    'name' => 'administer taxonomy',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
   // Exported permission: 'create task content'.
   $permissions['create task content'] = array(
     'name' => 'create task content',
@@ -102,6 +111,51 @@ function roles_and_permissions_feature_user_default_permissions() {
     'module' => 'path',
   );
 
+  // Exported permission: 'delete any task content'.
+  $permissions['delete any task content'] = array(
+    'name' => 'delete any task content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete own task content'.
+  $permissions['delete own task content'] = array(
+    'name' => 'delete own task content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete terms in state'.
+  $permissions['delete terms in state'] = array(
+    'name' => 'delete terms in state',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'delete terms in tags'.
+  $permissions['delete terms in tags'] = array(
+    'name' => 'delete terms in tags',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'edit any task content'.
+  $permissions['edit any task content'] = array(
+    'name' => 'edit any task content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'edit own comments'.
   $permissions['edit own comments'] = array(
     'name' => 'edit own comments',
@@ -119,6 +173,24 @@ function roles_and_permissions_feature_user_default_permissions() {
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: 'edit terms in state'.
+  $permissions['edit terms in state'] = array(
+    'name' => 'edit terms in state',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'edit terms in tags'.
+  $permissions['edit terms in tags'] = array(
+    'name' => 'edit terms in tags',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'taxonomy',
   );
 
   // Exported permission: 'revert revisions'.
