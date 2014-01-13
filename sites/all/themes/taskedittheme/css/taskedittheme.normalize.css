@@ -48,8 +48,10 @@ textarea {
   font-family: sans-serif;
 }
 
-body {
-  margin: 0;
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 100%;
 }
 
 /* normalize.css v1.1.0 | Links | MIT License | git.io/normalize */
