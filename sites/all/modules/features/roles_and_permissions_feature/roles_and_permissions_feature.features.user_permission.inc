@@ -36,7 +36,6 @@ function roles_and_permissions_feature_user_default_permissions() {
     'name' => 'access draggableviews',
     'roles' => array(
       'administrator' => 'administrator',
-      'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'draggableviews',
