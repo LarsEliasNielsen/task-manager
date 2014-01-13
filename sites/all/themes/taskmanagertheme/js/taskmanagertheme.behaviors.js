@@ -44,11 +44,11 @@
       // By using the 'context' variable we make sure that our code only runs on
       // the relevant HTML. Furthermore, by using jQuery.once() we make sure that
       // we don't run the same piece of code for an HTML snippet that we already
-      // processed previously. By using .once('sidebar') all processed elements will
-      // get tagged with a 'sidebar-processed' class, causing all future invocations
+      // processed previously. By using .once('tmt-init') all processed elements will
+      // get tagged with a 'tmt-init-processed' class, causing all future invocations
       // of this behavior to ignore them.
 
-      $('.tabledrag-handle', context).once('tm-init', function () {
+      $('.tabledrag-handle', context).once('tmt-init', function () {
         // handle
         var $handle = $('.tabledrag-handle .handle');
         $handle.replaceWith('<i class="ion ion-ios7-more"></i>');
@@ -59,7 +59,7 @@
   Drupal.behaviors.taskmanagerthemeHover = {
     attach: function (context, settings) {
 
-      $('#draggableviews-table-columns-backlog', context).once('tm-hover', function () {
+      $('#draggableviews-table-columns-backlog', context).once('tmt-hover', function () {
         // task
         var $task = $('#draggableviews-table-columns-backlog tr.draggable');
         // initially hidden
@@ -83,7 +83,7 @@
   Drupal.behaviors.taskmanagerthemeSidebar = {
 
     attach: function (context, settings) {
-      $('#sidebar', context).once('tm-sidebar', function () {
+      $('#sidebar', context).once('tmt-sidebar', function () {
         // CLICK
         $('#sidebar-toggle').click(function() {
           // sidebar

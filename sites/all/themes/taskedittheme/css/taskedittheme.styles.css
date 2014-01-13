@@ -2,4 +2,22 @@ img, media {
   max-width: 100%;
 }
 
+#overlay-close-bg {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+#overlay {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* No files to import found in partials/components/**\/* */
