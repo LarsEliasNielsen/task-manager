@@ -197,7 +197,10 @@ function roles_and_permissions_feature_user_default_permissions() {
   $permissions['revert revisions'] = array(
     'name' => 'revert revisions',
     'roles' => array(
+      'Developer' => 'Developer',
+      'Project Manager' => 'Project Manager',
       'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
   );
@@ -226,6 +229,8 @@ function roles_and_permissions_feature_user_default_permissions() {
   $permissions['view own unpublished content'] = array(
     'name' => 'view own unpublished content',
     'roles' => array(
+      'Developer' => 'Developer',
+      'Project Manager' => 'Project Manager',
       'administrator' => 'administrator',
     ),
     'module' => 'node',
@@ -236,6 +241,7 @@ function roles_and_permissions_feature_user_default_permissions() {
     'name' => 'view revisions',
     'roles' => array(
       'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
   );
