@@ -56,10 +56,8 @@ table.views-table,
 .l-sidebar {
   *zoom: 1; /* IE 7 and below hack */
   width: 230px;
-  height: 100%;
-  position: fixed;
+  overflow-y: scroll;
   right: 0;
-  top: 118px;
 }
 
 .views-field-title a {
@@ -69,10 +67,8 @@ table.views-table,
 .l-sidebar-toggle {
   *zoom: 1; /* IE 7 and below hack */
   width: 20px;
-  height: 100%;
-  position: fixed;
   right: 230px;
-  top: 118px;
+  cursor: pointer;
 }
 
 .ion-chevron-up {
@@ -83,11 +79,6 @@ table.views-table,
 
 .tabledrag-toggle-weight-wrapper {
   display: none; /* hide "Show row weights" */
-}
-
-body.logged-in .l-sidebar,
-body.logged-in .l-sidebar-toggle {
-  top: 147px; /* accounting for admin menu */
 }
 
 .l-header:after,

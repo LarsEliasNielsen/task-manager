@@ -48,10 +48,48 @@
       // get tagged with a 'tmt-init-processed' class, causing all future invocations
       // of this behavior to ignore them.
 
+
+        // PLACING TABLEDRAG HANDLE
       $('.tabledrag-handle', context).once('tmt-init', function () {
         // handle
         var $handle = $('.tabledrag-handle .handle');
         $handle.replaceWith('<i class="ion ion-ios7-more"></i>');
+      });
+
+      // SIDEBAR SCROLL
+      $('#sidebar', context).once('tmt-init', function () {
+        // accounting for admin-menu when setting variables
+        if ($('body').hasClass('adminimal-menu')) {
+          $viewportHeight = $(window).height()-29;
+          $topHeight = $('#header').height() +29;
+          $fixedTopHeight = '29px';
+        } else {
+          $viewportHeight = $(window).height();
+          $topHeight = $('#header').height();
+          $fixedTopHeight = '0';
+        }
+
+        $headerHeight = $('#header').height();
+        $sidebarHeight = $viewportHeight - $headerHeight;
+        $mainHeight = $('#main').height();
+
+        // initial styling
+        $('#sidebar').css({ 'position':'absolute', 'top':$topHeight, 'height':$sidebarHeight });
+        $('#sidebar-toggle').css({ 'position':'absolute', 'top':$topHeight, 'height':$sidebarHeight });
+
+        // use scroll function when #main is long enough
+        if ($mainHeight >= $sidebarHeight) {
+          $(window).scroll(function () {
+            $windowScroll = $(window).scrollTop();
+            if ($windowScroll <= 118) {
+              $('#sidebar').css({ 'position':'absolute', 'top':$topHeight, 'height':($sidebarHeight+$windowScroll) });
+              $('#sidebar-toggle').css({ 'position':'absolute', 'top':$topHeight, 'height':($sidebarHeight+$windowScroll) });
+            } else {
+              $('#sidebar').css({ 'position':'fixed', 'top':$fixedTopHeight, 'height':($viewportHeight) });
+              $('#sidebar-toggle').css({ 'position':'fixed', 'top':$fixedTopHeight, 'height':($viewportHeight) });
+            }
+          });
+        }
       });
     }
   }
