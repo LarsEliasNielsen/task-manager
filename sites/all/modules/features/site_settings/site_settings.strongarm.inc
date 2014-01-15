@@ -50,7 +50,9 @@ function site_settings_strongarm() {
       'width' => '700px',
     ),
     'admin/*' => FALSE,
-    'node/add' => FALSE,
+    'node/add/*' => array(
+      'width' => '700px',
+    ),
   );
   $export['overlay_paths_ui_paths'] = $strongarm;
 
@@ -119,7 +121,7 @@ node/*',
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'subpathauto_depth';
-  $strongarm->value = '1';
+  $strongarm->value = '3';
   $export['subpathauto_depth'] = $strongarm;
 
   $strongarm = new stdClass();
