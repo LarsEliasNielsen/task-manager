@@ -99,6 +99,7 @@ function content_types_feature_strongarm() {
   $strongarm->name = 'node_options_task';
   $strongarm->value = array(
     0 => 'status',
+    1 => 'revision',
   );
   $export['node_options_task'] = $strongarm;
 
