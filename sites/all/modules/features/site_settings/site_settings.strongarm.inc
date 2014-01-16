@@ -53,6 +53,9 @@ function site_settings_strongarm() {
     'node/add/*' => array(
       'width' => '700px',
     ),
+    'users/*' => array(
+      'width' => '700px',
+    ),
   );
   $export['overlay_paths_ui_paths'] = $strongarm;
 
@@ -64,7 +67,8 @@ function site_settings_strongarm() {
     'theme' => 'taskedittheme',
     'visibility' => '1',
     'pages' => 'task/*
-node/*',
+node/*
+users/*',
   );
   $export['overlay_theme'] = $strongarm;
 
