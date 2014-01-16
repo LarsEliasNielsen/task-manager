@@ -151,6 +151,8 @@ function roles_and_permissions_feature_user_default_permissions() {
   $permissions['edit any task content'] = array(
     'name' => 'edit any task content',
     'roles' => array(
+      'Developer' => 'Developer',
+      'Project Manager' => 'Project Manager',
       'administrator' => 'administrator',
     ),
     'module' => 'node',
