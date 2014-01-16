@@ -1,0 +1,25 @@
+<?php
+/**
+ * Implements hook_node_insert.
+ */
+function redirect_node_insert($node) {
+  if ($node->type == 'task'){
+    drupal_goto('<front>');
+  }
+}
+
+/**
+ * Implements hook_node_update.
+ */
+function redirect_node_update($node) {
+  if ($node->type == 'task'){
+    drupal_goto('<front>');
+  }
+}
+
+/**
+ * Implements hook_user_login.
+ */
+function redirect_user_login($edit, $account) {
+  drupal_goto('<front>');
+}

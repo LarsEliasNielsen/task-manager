@@ -1,0 +1,4 @@
+name = Redirect
+description = Redirecting after login and save.
+core = 7.x
+package = Custom
