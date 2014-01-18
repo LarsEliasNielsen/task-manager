@@ -195,6 +195,7 @@ function views_feature_views_default_views() {
   $handler->display->display_options['fields']['field_state']['table'] = 'field_data_field_state';
   $handler->display->display_options['fields']['field_state']['field'] = 'field_state';
   $handler->display->display_options['fields']['field_state']['label'] = '';
+  $handler->display->display_options['fields']['field_state']['element_class'] = 'Not-started';
   $handler->display->display_options['fields']['field_state']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_state']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Content: Deadline */
@@ -262,6 +263,7 @@ function views_feature_views_default_views() {
   $handler->display->display_options['fields']['field_state']['table'] = 'field_data_field_state';
   $handler->display->display_options['fields']['field_state']['field'] = 'field_state';
   $handler->display->display_options['fields']['field_state']['label'] = '';
+  $handler->display->display_options['fields']['field_state']['element_class'] = 'Current';
   $handler->display->display_options['fields']['field_state']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_state']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Content: Deadline */
@@ -354,6 +356,7 @@ function views_feature_views_default_views() {
   $handler->display->display_options['fields']['field_state']['table'] = 'field_data_field_state';
   $handler->display->display_options['fields']['field_state']['field'] = 'field_state';
   $handler->display->display_options['fields']['field_state']['label'] = '';
+  $handler->display->display_options['fields']['field_state']['element_class'] = 'Done';
   $handler->display->display_options['fields']['field_state']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_state']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Content: Deadline */
@@ -441,6 +444,7 @@ function views_feature_views_default_views() {
   $handler->display->display_options['fields']['field_state']['table'] = 'field_data_field_state';
   $handler->display->display_options['fields']['field_state']['field'] = 'field_state';
   $handler->display->display_options['fields']['field_state']['label'] = '';
+  $handler->display->display_options['fields']['field_state']['element_class'] = 'Needs-review';
   $handler->display->display_options['fields']['field_state']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_state']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Content: Deadline */
@@ -623,6 +627,7 @@ function views_feature_views_default_views() {
   $handler->display->display_options['fields']['field_state-revision_id']['table'] = 'field_revision_field_state';
   $handler->display->display_options['fields']['field_state-revision_id']['field'] = 'field_state-revision_id';
   $handler->display->display_options['fields']['field_state-revision_id']['label'] = '';
+  $handler->display->display_options['fields']['field_state-revision_id']['element_class'] = '[field_state-revision_id]';
   $handler->display->display_options['fields']['field_state-revision_id']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_state-revision_id']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Content revision: Title */
