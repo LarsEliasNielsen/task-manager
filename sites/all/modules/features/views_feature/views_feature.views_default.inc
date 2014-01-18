@@ -25,7 +25,12 @@ function views_feature_views_default_views() {
   $handler->display->display_options['title'] = 'Backlog';
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+    4 => '4',
+    5 => '5',
+  );
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -36,6 +41,10 @@ function views_feature_views_default_views() {
   $handler->display->display_options['empty']['area_text_custom']['id'] = 'area_text_custom';
   $handler->display->display_options['empty']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['empty']['area_text_custom']['field'] = 'area_text_custom';
+  /* Relationship: Content revision: User */
+  $handler->display->display_options['relationships']['uid_1']['id'] = 'uid_1';
+  $handler->display->display_options['relationships']['uid_1']['table'] = 'node_revision';
+  $handler->display->display_options['relationships']['uid_1']['field'] = 'uid';
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
@@ -87,11 +96,41 @@ function views_feature_views_default_views() {
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
+    'nid' => 'nid',
     'title' => 'title',
+    'draggableviews' => 'draggableviews',
+    'field_state' => 'field_state',
+    'field_deadline' => 'field_deadline',
   );
   $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
+    'nid' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
     'title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'draggableviews' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_state' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_deadline' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -102,6 +141,14 @@ function views_feature_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<ul><li><a href="/node/add/task">Add a new Task</a></li></ul>';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
   $handler->display->display_options['defaults']['empty'] = FALSE;
   /* No results behavior: Global: Unfiltered text */
   $handler->display->display_options['empty']['area_text_custom']['id'] = 'area_text_custom';
@@ -110,6 +157,88 @@ function views_feature_views_default_views() {
   $handler->display->display_options['empty']['area_text_custom']['empty'] = TRUE;
   $handler->display->display_options['empty']['area_text_custom']['content'] = 'You have not created any tasks.';
   $handler->display->display_options['empty']['area_text_custom']['tokenize'] = TRUE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Content revision: User */
+  $handler->display->display_options['relationships']['uid_1']['id'] = 'uid_1';
+  $handler->display->display_options['relationships']['uid_1']['table'] = 'node_revision';
+  $handler->display->display_options['relationships']['uid_1']['field'] = 'uid';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Draggableviews: Content */
+  $handler->display->display_options['fields']['draggableviews']['id'] = 'draggableviews';
+  $handler->display->display_options['fields']['draggableviews']['table'] = 'node';
+  $handler->display->display_options['fields']['draggableviews']['field'] = 'draggableviews';
+  $handler->display->display_options['fields']['draggableviews']['label'] = '';
+  $handler->display->display_options['fields']['draggableviews']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['draggableviews']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['draggableviews']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['draggableviews']['draggableviews']['ajax'] = 0;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['path'] = 'node/[nid]/edit';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Content: State */
+  $handler->display->display_options['fields']['field_state']['id'] = 'field_state';
+  $handler->display->display_options['fields']['field_state']['table'] = 'field_data_field_state';
+  $handler->display->display_options['fields']['field_state']['field'] = 'field_state';
+  $handler->display->display_options['fields']['field_state']['label'] = '';
+  $handler->display->display_options['fields']['field_state']['element_class'] = 'Not-started';
+  $handler->display->display_options['fields']['field_state']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_state']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Content: Deadline */
+  $handler->display->display_options['fields']['field_deadline']['id'] = 'field_deadline';
+  $handler->display->display_options['fields']['field_deadline']['table'] = 'field_data_field_deadline';
+  $handler->display->display_options['fields']['field_deadline']['field'] = 'field_deadline';
+  $handler->display->display_options['fields']['field_deadline']['label'] = '';
+  $handler->display->display_options['fields']['field_deadline']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_deadline']['alter']['text'] = 'Deadline: [field_deadline]';
+  $handler->display->display_options['fields']['field_deadline']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_deadline']['settings'] = array(
+    'format_type' => 'long',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid_1';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Draggableviews: Weight */
+  $handler->display->display_options['sorts']['weight']['id'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['table'] = 'draggableviews_structure';
+  $handler->display->display_options['sorts']['weight']['field'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'self';
+  $handler->display->display_options['sorts']['weight']['draggableviews_setting_new_items_bottom_list'] = 0;
+
+  /* Display: Current */
+  $handler = $view->new_display('block', 'Current', 'current');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Current';
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Unfiltered text */
+  $handler->display->display_options['empty']['area_text_custom']['id'] = 'area_text_custom';
+  $handler->display->display_options['empty']['area_text_custom']['table'] = 'views';
+  $handler->display->display_options['empty']['area_text_custom']['field'] = 'area_text_custom';
+  $handler->display->display_options['empty']['area_text_custom']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area_text_custom']['content'] = 'You have no current tasks.';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
@@ -129,38 +258,42 @@ function views_feature_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Field: Draggableviews: Content */
-  $handler->display->display_options['fields']['draggableviews']['id'] = 'draggableviews';
-  $handler->display->display_options['fields']['draggableviews']['table'] = 'node';
-  $handler->display->display_options['fields']['draggableviews']['field'] = 'draggableviews';
-  $handler->display->display_options['fields']['draggableviews']['label'] = '';
-  $handler->display->display_options['fields']['draggableviews']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['draggableviews']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['draggableviews']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['draggableviews']['draggableviews']['ajax'] = 1;
+  /* Field: Content: State */
+  $handler->display->display_options['fields']['field_state']['id'] = 'field_state';
+  $handler->display->display_options['fields']['field_state']['table'] = 'field_data_field_state';
+  $handler->display->display_options['fields']['field_state']['field'] = 'field_state';
+  $handler->display->display_options['fields']['field_state']['label'] = '';
+  $handler->display->display_options['fields']['field_state']['element_class'] = 'Current';
+  $handler->display->display_options['fields']['field_state']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_state']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Content: Deadline */
+  $handler->display->display_options['fields']['field_deadline']['id'] = 'field_deadline';
+  $handler->display->display_options['fields']['field_deadline']['table'] = 'field_data_field_deadline';
+  $handler->display->display_options['fields']['field_deadline']['field'] = 'field_deadline';
+  $handler->display->display_options['fields']['field_deadline']['label'] = '';
+  $handler->display->display_options['fields']['field_deadline']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_deadline']['alter']['text'] = 'Deadline: [field_deadline]';
+  $handler->display->display_options['fields']['field_deadline']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_deadline']['settings'] = array(
+    'format_type' => 'long',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid_1';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Draggableviews: Weight */
-  $handler->display->display_options['sorts']['weight']['id'] = 'weight';
-  $handler->display->display_options['sorts']['weight']['table'] = 'draggableviews_structure';
-  $handler->display->display_options['sorts']['weight']['field'] = 'weight';
-  $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'self';
-  $handler->display->display_options['sorts']['weight']['draggableviews_setting_new_items_bottom_list'] = 0;
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-
-  /* Display: Current */
-  $handler = $view->new_display('block', 'Current', 'current');
-  $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Current';
-  $handler->display->display_options['defaults']['empty'] = FALSE;
-  /* No results behavior: Global: Unfiltered text */
-  $handler->display->display_options['empty']['area_text_custom']['id'] = 'area_text_custom';
-  $handler->display->display_options['empty']['area_text_custom']['table'] = 'views';
-  $handler->display->display_options['empty']['area_text_custom']['field'] = 'area_text_custom';
-  $handler->display->display_options['empty']['area_text_custom']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area_text_custom']['content'] = 'You have no current tasks.';
+  /* Sort criterion: Content: Deadline (field_deadline) */
+  $handler->display->display_options['sorts']['field_deadline_value']['id'] = 'field_deadline_value';
+  $handler->display->display_options['sorts']['field_deadline_value']['table'] = 'field_data_field_deadline';
+  $handler->display->display_options['sorts']['field_deadline_value']['field'] = 'field_deadline_value';
+  $handler->display->display_options['sorts']['field_deadline_value']['order'] = 'DESC';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -199,6 +332,61 @@ function views_feature_views_default_views() {
   $handler->display->display_options['empty']['area_text_custom']['empty'] = TRUE;
   $handler->display->display_options['empty']['area_text_custom']['content'] = 'You have no finished tasks.';
   $handler->display->display_options['empty']['area_text_custom']['tokenize'] = TRUE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['path'] = 'node/[nid]/edit';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Content: State */
+  $handler->display->display_options['fields']['field_state']['id'] = 'field_state';
+  $handler->display->display_options['fields']['field_state']['table'] = 'field_data_field_state';
+  $handler->display->display_options['fields']['field_state']['field'] = 'field_state';
+  $handler->display->display_options['fields']['field_state']['label'] = '';
+  $handler->display->display_options['fields']['field_state']['element_class'] = 'Done';
+  $handler->display->display_options['fields']['field_state']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_state']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Content: Deadline */
+  $handler->display->display_options['fields']['field_deadline']['id'] = 'field_deadline';
+  $handler->display->display_options['fields']['field_deadline']['table'] = 'field_data_field_deadline';
+  $handler->display->display_options['fields']['field_deadline']['field'] = 'field_deadline';
+  $handler->display->display_options['fields']['field_deadline']['label'] = '';
+  $handler->display->display_options['fields']['field_deadline']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_deadline']['alter']['text'] = 'Deadline: [field_deadline]';
+  $handler->display->display_options['fields']['field_deadline']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_deadline']['settings'] = array(
+    'format_type' => 'long',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid_1';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Deadline (field_deadline) */
+  $handler->display->display_options['sorts']['field_deadline_value']['id'] = 'field_deadline_value';
+  $handler->display->display_options['sorts']['field_deadline_value']['table'] = 'field_data_field_deadline';
+  $handler->display->display_options['sorts']['field_deadline_value']['field'] = 'field_deadline_value';
+  $handler->display->display_options['sorts']['field_deadline_value']['order'] = 'DESC';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -221,10 +409,103 @@ function views_feature_views_default_views() {
   $handler->display->display_options['filters']['tid']['field'] = 'tid';
   $handler->display->display_options['filters']['tid']['value'] = array(
     4 => '4',
+  );
+  $handler->display->display_options['filters']['tid']['type'] = 'select';
+  $handler->display->display_options['filters']['tid']['vocabulary'] = 'state';
+
+  /* Display: Needs review */
+  $handler = $view->new_display('attachment', 'Needs review', 'needs_review');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Needs review';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['path'] = 'node/[nid]/edit';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Content: State */
+  $handler->display->display_options['fields']['field_state']['id'] = 'field_state';
+  $handler->display->display_options['fields']['field_state']['table'] = 'field_data_field_state';
+  $handler->display->display_options['fields']['field_state']['field'] = 'field_state';
+  $handler->display->display_options['fields']['field_state']['label'] = '';
+  $handler->display->display_options['fields']['field_state']['element_class'] = 'Needs-review';
+  $handler->display->display_options['fields']['field_state']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_state']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Content: Deadline */
+  $handler->display->display_options['fields']['field_deadline']['id'] = 'field_deadline';
+  $handler->display->display_options['fields']['field_deadline']['table'] = 'field_data_field_deadline';
+  $handler->display->display_options['fields']['field_deadline']['field'] = 'field_deadline';
+  $handler->display->display_options['fields']['field_deadline']['label'] = '';
+  $handler->display->display_options['fields']['field_deadline']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_deadline']['alter']['text'] = 'Deadline: [field_deadline]';
+  $handler->display->display_options['fields']['field_deadline']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_deadline']['settings'] = array(
+    'format_type' => 'long',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid_1';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Deadline (field_deadline) */
+  $handler->display->display_options['sorts']['field_deadline_value']['id'] = 'field_deadline_value';
+  $handler->display->display_options['sorts']['field_deadline_value']['table'] = 'field_data_field_deadline';
+  $handler->display->display_options['sorts']['field_deadline_value']['field'] = 'field_deadline_value';
+  $handler->display->display_options['sorts']['field_deadline_value']['order'] = 'DESC';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'task' => 'task',
+  );
+  /* Filter criterion: Content: Has taxonomy term */
+  $handler->display->display_options['filters']['tid']['id'] = 'tid';
+  $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
+  $handler->display->display_options['filters']['tid']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid']['value'] = array(
     3 => '3',
   );
   $handler->display->display_options['filters']['tid']['type'] = 'select';
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'state';
+  $handler->display->display_options['displays'] = array(
+    'done' => 'done',
+    'default' => 0,
+    'backlog' => 0,
+    'current' => 0,
+  );
   $export['columns'] = $view;
 
   $view = new view();
@@ -241,8 +522,12 @@ function views_feature_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'History';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['access']['perm'] = 'view revisions';
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+    4 => '4',
+    5 => '5',
+  );
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -296,46 +581,70 @@ function views_feature_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Content revision: User */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'node_revision';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['required'] = TRUE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content revision: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node_revision';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['text'] = '[title]';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['link_to_node_revision'] = TRUE;
-  /* Field: Content (historical data): State */
-  $handler->display->display_options['fields']['field_state-revision_id']['id'] = 'field_state-revision_id';
-  $handler->display->display_options['fields']['field_state-revision_id']['table'] = 'field_revision_field_state';
-  $handler->display->display_options['fields']['field_state-revision_id']['field'] = 'field_state-revision_id';
-  $handler->display->display_options['fields']['field_state-revision_id']['label'] = '';
-  $handler->display->display_options['fields']['field_state-revision_id']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_state-revision_id']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Content: Edit link */
+  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['label'] = '';
+  $handler->display->display_options['fields']['edit_node']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['edit_node']['alter']['text'] = '[title]';
+  $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
   /* Field: Content revision: Updated date */
   $handler->display->display_options['fields']['timestamp']['id'] = 'timestamp';
   $handler->display->display_options['fields']['timestamp']['table'] = 'node_revision';
   $handler->display->display_options['fields']['timestamp']['field'] = 'timestamp';
   $handler->display->display_options['fields']['timestamp']['label'] = '';
+  $handler->display->display_options['fields']['timestamp']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['timestamp']['alter']['text'] = 'was updated [timestamp]';
   $handler->display->display_options['fields']['timestamp']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['timestamp']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['timestamp']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['timestamp']['date_format'] = 'time ago';
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['text'] = 'by [name]';
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  /* Field: Content (historical data): State */
+  $handler->display->display_options['fields']['field_state-revision_id']['id'] = 'field_state-revision_id';
+  $handler->display->display_options['fields']['field_state-revision_id']['table'] = 'field_revision_field_state';
+  $handler->display->display_options['fields']['field_state-revision_id']['field'] = 'field_state-revision_id';
+  $handler->display->display_options['fields']['field_state-revision_id']['label'] = '';
+  $handler->display->display_options['fields']['field_state-revision_id']['element_class'] = '[field_state-revision_id]';
+  $handler->display->display_options['fields']['field_state-revision_id']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_state-revision_id']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Content revision: Title */
+  $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
+  $handler->display->display_options['fields']['title_1']['table'] = 'node_revision';
+  $handler->display->display_options['fields']['title_1']['field'] = 'title';
+  $handler->display->display_options['fields']['title_1']['label'] = 'Revision';
+  $handler->display->display_options['fields']['title_1']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['title_1']['alter']['text'] = 'view';
+  $handler->display->display_options['fields']['title_1']['link_to_node_revision'] = TRUE;
   /* Field: Content revision: Revert link */
   $handler->display->display_options['fields']['revert_revision']['id'] = 'revert_revision';
   $handler->display->display_options['fields']['revert_revision']['table'] = 'node_revision';
   $handler->display->display_options['fields']['revert_revision']['field'] = 'revert_revision';
-  $handler->display->display_options['fields']['revert_revision']['label'] = '';
+  $handler->display->display_options['fields']['revert_revision']['label'] = ', ';
   $handler->display->display_options['fields']['revert_revision']['element_label_colon'] = FALSE;
-  /* Field: Content: Link */
-  $handler->display->display_options['fields']['view_node']['id'] = 'view_node';
-  $handler->display->display_options['fields']['view_node']['table'] = 'views_entity_node';
-  $handler->display->display_options['fields']['view_node']['field'] = 'view_node';
-  $handler->display->display_options['fields']['view_node']['label'] = '';
-  $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['revert_revision']['hide_empty'] = TRUE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
 

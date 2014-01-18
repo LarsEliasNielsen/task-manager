@@ -40,16 +40,19 @@
   width: 33.3333%;
 }
 
-table.views-table,
-#draggableviews-table-columns-backlog {
-  width: 95%;
+.l-main .l-column-container .view-display-id-backlog .views-table {
+  width: 100%;
 }
 
 .l-main .l-column-container .view-display-id-backlog .views-table tr,
-#draggableviews-table-columns-backlog tr.draggable,
+.l-main .l-column-container .view-display-id-backlog .views-table tr .views-field {
+  display: block;
+}
+
+.l-main .l-column-container .view-display-id-backlog .views-table tr,
 .l-main .l-column-container .view-display-id-current .views-row,
 .l-main .l-column-container .view-display-id-done .views-row {
-  width: 95%; /* temp test size */
+  width: 95%;
   margin: 1px auto;
 }
 

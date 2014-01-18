@@ -2,4 +2,12 @@ img, media {
   max-width: 100%;
 }
 
+.views-form-columns-backlog > div > .form-actions {
+  display: none;
+}
+
+.tabledrag-changed-warning > .ninja {
+  display: block;
+}
+
 /* No files to import found in partials/components/**\/* */

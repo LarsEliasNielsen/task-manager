@@ -54,7 +54,6 @@ body {
 
 .l-sidebar .view-revision-history .views-row,
 .l-main .l-column-container .view-display-id-backlog .views-table tr,
-.l-main .l-column-container .view-display-id-backlog #draggableviews-table-columns-backlog tr.draggable,
 .l-main .l-column-container .view-display-id-current .views-row,
 .l-main .l-column-container .view-display-id-done .views-row {
   background-color: #f8f8f8;
@@ -62,15 +61,9 @@ body {
   box-shadow: 0 1px 4px 0 #ccc;
 }
 
-.l-sidebar .view-revision-history .views-row,
+.l-sidebar .view-revision-history .views-row:nth-child(odd),
 .l-main .l-column-container .view-display-id-backlog .views-table tr:nth-child(even),
-.l-main .l-column-container .view-display-id-backlog #draggableviews-table-columns-backlog tr.draggable:nth-child(even),
 .l-main .l-column-container .view-display-id-current .views-row:nth-child(odd),
 .l-main .l-column-container .view-display-id-done .views-row:nth-child(even) {
   background-color: #fbfbfb;
-}
-
-.l-main .l-column-container .view-display-id-backlog .views-table tr,
-.l-main .l-column-container .view-display-id-backlog #draggableviews-table-columns-backlog tr.draggable {
-  display: block;
 }

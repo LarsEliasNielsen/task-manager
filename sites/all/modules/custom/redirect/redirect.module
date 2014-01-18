@@ -1,0 +1,7 @@
+<?php
+/**
+ * Implements hook_user_login.
+ */
+function redirect_user_login($edit, $account) {
+  drupal_goto('<front>');
+}

@@ -10,10 +10,23 @@
    * In most cases, there is no good reason to NOT wrap your markup producing
    * JavaScript in a theme function.
    */
-  Drupal.theme.prototype.taskmanagerthemeExampleButton = function (path, title) {
-    // Create an anchor element with jQuery.
-    return $('<a href="' + path + '" title="' + title + '">' + title + '</a>');
+
+  Drupal.theme.prototype.tableDragChangedWarning = function () {
+    $tabledragWarning = $('<div></div>');
+    // $tabledragWarning.attr('id', 'draggable-changed');
+    $tabledragWarning.addClass('tabledrag-changed-warning messages warning');
+
+    $tabledragWarning.append(Drupal.theme('tableDragChangedMarker') + '' + Drupal.t('Click \'Save\' to apply new order.'));
+    $tabledragWarning.append($('#edit-actions'));
+    $('#edit-actions').toggleClass('ninja');
+
+    return $tabledragWarning;
   };
+
+  Drupal.theme.prototype.tableDragChangedMarker = function () {
+    return '<span class="ion-ios7-information-outline warning tabledrag-changed"></span>';
+  };
+  // TODO: remove tableDragChangedMarker after save
 
   /**
    * Behaviors are Drupal's way of applying JavaScript to a page. The advantage
@@ -48,6 +61,8 @@
       // get tagged with a 'tmt-init-processed' class, causing all future invocations
       // of this behavior to ignore them.
 
+      // hidding Save button for tabledrag list
+      $('#edit-actions').toggleClass('ninja');
 
         // PLACING TABLEDRAG HANDLE
       $('.tabledrag-handle', context).once('tmt-init', function () {
@@ -102,16 +117,16 @@
         var $task = $('#draggableviews-table-columns-backlog tr.draggable');
         // initially hidden
         $task.find('.ion-ios7-more').hide();
-        $task.find('a').css('margin-left', '10px');
+        $task.find('.views-field-title a').css('margin-left', '10px');
         // hover
         $task.hover(
           function () {
             $(this).find('.ion-ios7-more').show();
-            $(this).find('a').css('margin-left', '0');
+            $(this).find('.views-field-title a').css('margin-left', '0');
           }, 
           function () {
             $(this).find('.ion-ios7-more').hide();
-            $(this).find('a').css('margin-left', '10px');
+            $(this).find('.views-field-title a').css('margin-left', '10px');
           }
         );
       });

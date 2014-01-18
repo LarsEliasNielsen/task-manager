@@ -41,6 +41,34 @@ function site_settings_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'configurable_timezones';
+  $strongarm->value = 1;
+  $export['configurable_timezones'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'date_default_timezone';
+  $strongarm->value = 'Europe/Copenhagen';
+  $export['date_default_timezone'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'date_first_day';
+  $strongarm->value = '1';
+  $export['date_first_day'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'empty_timezone_message';
+  $strongarm->value = 0;
+  $export['empty_timezone_message'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'overlay_paths_ui_paths';
   $strongarm->value = array(
     'task/*' => array(
@@ -51,6 +79,9 @@ function site_settings_strongarm() {
     ),
     'admin/*' => FALSE,
     'node/add/*' => array(
+      'width' => '700px',
+    ),
+    'users/*' => array(
       'width' => '700px',
     ),
   );
@@ -64,7 +95,8 @@ function site_settings_strongarm() {
     'theme' => 'taskedittheme',
     'visibility' => '1',
     'pages' => 'task/*
-node/*',
+node/*
+users/*',
   );
   $export['overlay_theme'] = $strongarm;
 
@@ -109,6 +141,13 @@ node/*',
   $strongarm->name = 'pathauto_user_pattern';
   $strongarm->value = 'users/[user:name]';
   $export['pathauto_user_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'site_default_country';
+  $strongarm->value = 'DK';
+  $export['site_default_country'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
