@@ -7,10 +7,9 @@
  */
 
 function taskedittheme_form_alter(&$form, &$form_state, $form_id) {
-  if ($form_id == 'task_node_form' && !isset($form['nid']['#value'])) {
+  if ($form_id == 'task_node_form') {
     // redirect after we created a new node
     $form['actions']['submit']['#submit'][] = 'node_reference_redirect';
-  } elseif ($form_id == 'task_node_form' && isset($form['nid']['#value'])) {
     // redirect after we updated a node
     $form['#submit'][] = 'node_save_reference_redirect';
   }
