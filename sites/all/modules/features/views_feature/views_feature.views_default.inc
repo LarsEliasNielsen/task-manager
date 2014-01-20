@@ -147,8 +147,8 @@ function views_feature_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = '<ul><li><a href="/node/add/task">Add a new Task</a></li></ul>';
-  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['header']['area']['content'] = '<ul><li><a href="/node/add/task"><span>Add task</span></a></li></ul>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['empty'] = FALSE;
   /* No results behavior: Global: Unfiltered text */
   $handler->display->display_options['empty']['area_text_custom']['id'] = 'area_text_custom';
