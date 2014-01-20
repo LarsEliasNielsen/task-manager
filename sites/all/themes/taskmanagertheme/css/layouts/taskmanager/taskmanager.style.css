@@ -2,15 +2,84 @@
  * taskmanager.style.scss
  * Style theming
  ******************************************************************************/
+/* Color theme: http://www.colourlovers.com/palette/848743/(%E2%97%95_%E2%80%9D_%E2%97%95) */
+
 body {
   background-color: #f9f9f7;
 }
 
+/*  HEADER  */
 .l-header {
   background-color: #e2e2e2;
   box-shadow: 0 2px 4px 0 #aaa;
 }
 
+/*  MAIN  */
+.messages {
+  margin: 8px 10px;
+}
+
+/*  COLUMNS  */
+#main .l-region--column01 a,
+#main .l-region--column02 a,
+#main .l-region--column03 a {
+  color: #191919;
+  text-decoration: none;
+}
+
+#main .l-region--column01 a:hover,
+#main .l-region--column02 a:hover,
+#main .l-region--column03 a:hover {
+  color: #4d4d4d;
+}
+
+/*  COLUMNS HEADER  */
+#main .l-region--column01 .view-columns .view-header ul li {
+  list-style: none;
+}
+
+#main .l-region--column01 h2.block__title,
+#main .l-region--column02 h2.block__title,
+#main .l-region--column03 h2.block__title {
+  font-weight: normal;
+  background-color: #f2f2f2;
+  padding: 10px 10px 10px 12px;
+  margin: 8px 10px;
+  border: 1px solid #bdbab2;
+}
+
+/*  TASKS  */
+#main .l-region--column01 .view-columns .view-content #draggableviews-table-columns-backlog tr {
+  position: relative;
+}
+
+/*  TASK TITLES/HANDLES  */
+#main .l-region--column01 .view-columns .view-content #draggableviews-table-columns-backlog tr td.views-field-title .tabledrag-handle {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+}
+
+/*  TASK DETAILS  */
+#main .l-region--column01 .view-columns .view-content #draggableviews-table-columns-backlog tr td.views-field-field-state {
+  font-size: 12px;
+  color: #a1a1a1;
+}
+
+#main .l-region--column02 .view-columns .view-content .views-row .views-field-field-state,
+#main .l-region--column03 .view-columns .view-content .views-row .views-field-field-state,
+#main .l-region--column01 .view-columns .view-content #draggableviews-table-columns-backlog tr td.views-field-field-deadline,
+#main .l-region--column02 .view-columns .view-content .views-row .views-field-field-deadline,
+#main .l-region--column03 .view-columns .view-content .views-row .views-field-field-deadline,
+#main .l-region--column01 .view-columns .view-content #draggableviews-table-columns-backlog tr td.views-field-name,
+#main .l-region--column02 .view-columns .view-content .views-row .views-field-name,
+#main .l-region--column03 .view-columns .view-content .views-row .views-field-name {
+  padding-left: 10px;
+  font-size: 12px;
+  color: #a1a1a1;
+}
+
+/*  SIDEBAR  */
 .l-sidebar {
   background-color: #f2f2f2;
   color: #a1a1a1;
@@ -24,24 +93,7 @@ body {
   background: -o-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.25) 100%);
   background: -ms-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.25) 100%);
   background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.25) 100%);
-}
-
-.ion-chevron-up {
-  color: #808080;
-  -moz-transform: rotate(90deg);
-  -webkit-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  transform: rotate(90deg);
-}
-
-.ion-ios7-more {
-  color: #808080;
-  -moz-transform: rotate(90deg);
-  -webkit-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  transform: rotate(90deg);
+  cursor: pointer;
 }
 
 .sidebar-collapsed {
@@ -66,4 +118,88 @@ body {
 .l-main .l-column-container .view-display-id-current .views-row:nth-child(odd),
 .l-main .l-column-container .view-display-id-done .views-row:nth-child(even) {
   background-color: #fbfbfb;
+}
+
+#block-views-revision-history-history a {
+  color: #191919;
+  text-decoration: none;
+}
+
+#block-views-revision-history-history a:hover {
+  color: #4d4d4d;
+}
+
+#block-views-revision-history-history .views-row .views-field-timestamp,
+#block-views-revision-history-history .views-row .views-field-name,
+#block-views-revision-history-history .views-row .views-field-title-1,
+#block-views-revision-history-history .views-row .views-field-field-state-revision-id,
+#block-views-revision-history-history .views-row .views-field-revert-revision {
+  font-size: 12px;
+}
+
+/*  SIDEBAR HEADER  */
+#block-views-revision-history-history h2.block__title {
+  font-size: 24px;
+  font-weight: normal;
+  color: #000000;
+  border: 1px solid #bdbab2;
+  padding: 10px 10px 10px 8px;
+}
+
+/*  STATES  */
+#block-views-revision-history-history .views-field-field-state-revision-id .Not-started,
+#block-views-revision-history-history .views-field-field-state-revision-id .Started,
+#block-views-revision-history-history .views-field-field-state-revision-id .Needs-review,
+#block-views-revision-history-history .views-field-field-state-revision-id .Done,
+#main .l-region--column01 .view-columns .view-content #draggableviews-table-columns-backlog tr td.views-field-field-state,
+#main .l-region--column02 .view-columns .view-content .views-row .views-field-field-state .field-content,
+#main .l-region--column03 .view-columns .view-content .views-row .views-field-field-state .field-content {
+  color: #fff;
+}
+
+#block-views-revision-history-history .views-field-field-state-revision-id .Not-started,
+#main .l-region--column01 .view-columns .view-content #draggableviews-table-columns-backlog tr td.views-field-field-state.Not-started,
+#main .l-region--column02 .view-columns .view-content .views-row .views-field-field-state .Not-started,
+#main .l-region--column03 .view-columns .view-content .views-row .views-field-field-state .Not-started {
+  background: #bd1550;
+}
+
+#block-views-revision-history-history .views-field-field-state-revision-id .Started,
+#main .l-region--column01 .view-columns .view-content #draggableviews-table-columns-backlog tr td.views-field-field-state.Started,
+#main .l-region--column02 .view-columns .view-content .views-row .views-field-field-state .Started,
+#main .l-region--column03 .view-columns .view-content .views-row .views-field-field-state .Started {
+  background: #e97f02;
+}
+
+#block-views-revision-history-history .views-field-field-state-revision-id .Needs-review,
+#main .l-region--column01 .view-columns .view-content #draggableviews-table-columns-backlog tr td.views-field-field-state.Needs-review,
+#main .l-region--column02 .view-columns .view-content .views-row .views-field-field-state .Needs-review,
+#main .l-region--column03 .view-columns .view-content .views-row .views-field-field-state .Needs-review {
+  background: #f8ca00;
+}
+
+#block-views-revision-history-history .views-field-field-state-revision-id .Done,
+#main .l-region--column01 .view-columns .view-content #draggableviews-table-columns-backlog tr td.views-field-field-state.Done,
+#main .l-region--column02 .view-columns .view-content .views-row .views-field-field-state .Done,
+#main .l-region--column03 .view-columns .view-content .views-row .views-field-field-state .Done {
+  background: #8a9b0f;
+}
+
+/*  IONICONS STYLING  */
+.ion-chevron-up {
+  color: #808080;
+  -moz-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+.ion-ios7-more {
+  color: #808080;
+  -moz-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
 }
