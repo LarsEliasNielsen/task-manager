@@ -10,6 +10,71 @@
 function content_types_feature_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'field_collection_item-field_sub_tasks-field_completed'
+  $field_instances['field_collection_item-field_sub_tasks-field_completed'] = array(
+    'bundle' => 'field_sub_tasks',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_completed',
+    'label' => 'Completed',
+    'required' => FALSE,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 0,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 0,
+    ),
+  );
+
+  // Exported field_instance: 'field_collection_item-field_sub_tasks-field_sub_task'
+  $field_instances['field_collection_item-field_sub_tasks-field_sub_task'] = array(
+    'bundle' => 'field_sub_tasks',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_sub_task',
+    'label' => 'Sub-task',
+    'required' => FALSE,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 1,
+    ),
+  );
+
   // Exported field_instance: 'node-task-body'
   $field_instances['node-task-body'] = array(
     'bundle' => 'task',
@@ -149,6 +214,49 @@ function content_types_feature_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-task-field_sub_tasks'
+  $field_instances['node-task-field_sub_tasks'] = array(
+    'bundle' => 'task',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Add a list of sub-tasks',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'field_collection',
+        'settings' => array(
+          'add' => 'Add',
+          'delete' => 'Delete',
+          'description' => TRUE,
+          'edit' => 'Edit',
+          'view_mode' => 'full',
+        ),
+        'type' => 'field_collection_view',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_sub_tasks',
+    'label' => 'Sub-tasks',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'field_collection',
+      'settings' => array(),
+      'type' => 'field_collection_embed',
+      'weight' => 35,
+    ),
+  );
+
   // Exported field_instance: 'node-task-field_tags'
   $field_instances['node-task-field_tags'] = array(
     'bundle' => 'task',
@@ -193,13 +301,17 @@ eg. \'front-end\', \'back-end\', \'need-to-have\' or \'nice-to-have\'.',
   // Translatables
   // Included for use with string extractors like potx.
   t('Add a description of the task');
+  t('Add a list of sub-tasks');
   t('Add existing or new tags to your task,
 eg. \'front-end\', \'back-end\', \'need-to-have\' or \'nice-to-have\'.');
+  t('Completed');
   t('Deadline');
   t('Description');
   t('Select a deadline date');
   t('Select a working state');
   t('State');
+  t('Sub-task');
+  t('Sub-tasks');
   t('Tags');
 
   return $field_instances;
