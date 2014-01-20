@@ -24,7 +24,7 @@
   };
 
   Drupal.theme.prototype.tableDragChangedMarker = function () {
-    return '<span class="ion-android-information warning tabledrag-changed"></span>';
+    return '<span class="ion-alert-circled warning tabledrag-changed"></span>';
   };
   // TODO: remove tableDragChangedMarker after save
 
@@ -96,19 +96,22 @@
         $mainHeight = $('#main').height();
 
         // initial styling
-        $('#sidebar').css({ 'position':'absolute', 'top':$topHeight, 'height':$sidebarHeight });
-        $('#sidebar-toggle').css({ 'position':'absolute', 'top':$topHeight, 'height':$sidebarHeight });
+        $('#sidebar').css({ 'top':$topHeight, 'height':$sidebarHeight });
+        $('#sidebar-toggle').css({ 'top':$topHeight, 'height':$sidebarHeight });
 
         // use scroll function when #main is long enough
         if ($mainHeight >= $sidebarHeight) {
           $(window).scroll(function () {
             $windowScroll = $(window).scrollTop();
-            if ($windowScroll <= 118) {
-              $('#sidebar').css({ 'position':'absolute', 'top':$topHeight, 'height':($sidebarHeight+$windowScroll) });
-              $('#sidebar-toggle').css({ 'position':'absolute', 'top':$topHeight, 'height':($sidebarHeight+$windowScroll) });
+            if ($windowScroll < 0) {
+              $windowScroll = 0;
+            }
+            if ($windowScroll >= 0 && $windowScroll < 118) {
+              $('#sidebar').css({ 'top':$topHeight-$windowScroll, 'height':($sidebarHeight+$windowScroll) });
+              $('#sidebar-toggle').css({ 'top':$topHeight-$windowScroll, 'height':($sidebarHeight+$windowScroll) });
             } else {
-              $('#sidebar').css({ 'position':'fixed', 'top':$fixedTopHeight, 'height':($viewportHeight) });
-              $('#sidebar-toggle').css({ 'position':'fixed', 'top':$fixedTopHeight, 'height':($viewportHeight) });
+              $('#sidebar').css({ 'top':$fixedTopHeight, 'height':($viewportHeight) });
+              $('#sidebar-toggle').css({ 'top':$fixedTopHeight, 'height':($viewportHeight) });
             }
           });
         }
@@ -138,35 +141,48 @@
   }
 
   Drupal.behaviors.taskmanagerthemeSidebar = {
-
     attach: function (context, settings) {
       $('#sidebar', context).once('tmt-sidebar', function () {
+        // SETTING ELEMENT VARIABLES
+          var $sidebar = $('#sidebar');
+          var $sidebartoggle = $('#sidebar-toggle');
+          var $main = $('#main');
+          var $rotate = $('#ion-chevron-up');
+
+        // INITIAL
+        if ($sidebar.hasClass('sidebar-collapsed')) {
+          $sidebar.css({ 'right':'-230px' });
+          $sidebartoggle.css({ 'right':'0' });
+          $main.css({ 'padding-right':'0' });
+          $rotate.toggleClass('icon-rotate');
+        }
+
         // CLICK
         $('#sidebar-toggle').click(function() {
           // sidebar
-          var $sidebar = $('#sidebar');
           $sidebar.animate({
             right: parseInt($sidebar.css('right'),10) == 0 ?
               -$sidebar.outerWidth() :
               0
           }, 100);
+          $sidebar.toggleClass('sidebar-collapsed');
+
           // sidebartoggle
-          var $sidebartoggle = $('#sidebar-toggle');
           $sidebartoggle.animate({
             right: parseInt($sidebartoggle.css('right'),10) == 0 ?
-              230 :
+              $sidebar.outerWidth() :
               0
           }, 100);
+
           // main
-          var $main = $('#main');
           $main.animate({
             paddingRight: parseInt($main.css('padding-right'),10) == 0 ?
               250 :
               0
           }, 100);
+
           // rotate
-          var $rotate = $('#ion-chevron-up');
-          $rotate.toggleClass('sidebar-collapsed');
+          $rotate.toggleClass('icon-rotate');
         });
       });
     }
