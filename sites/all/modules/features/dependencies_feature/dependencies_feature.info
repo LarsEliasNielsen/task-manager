@@ -20,6 +20,7 @@ dependencies[] = number
 dependencies[] = options
 dependencies[] = overlay
 dependencies[] = overlay_paths
+dependencies[] = overlay_paths_ui
 dependencies[] = overlay_theme
 dependencies[] = path
 dependencies[] = pathauto
