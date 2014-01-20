@@ -100,8 +100,18 @@
 }
 
 /*  TASKS  */
+#main .l-region--column01 .view-columns .view-content #draggableviews-table-columns-backlog tr {
+  position: relative;
+}
 
-/*  TASK TITLES  */
+/*  TASK TITLES/HANDLES  */
+#main .l-region--column01 .view-columns .view-content #draggableviews-table-columns-backlog tr td.views-field-title .tabledrag-handle {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  min-height: 100%;
+}
+
 #main .l-region--column01 .view-columns .view-content #draggableviews-table-columns-backlog tr td.views-field-title a[href*=task] {
   display: inline-block;
   margin-left: 10px;
@@ -123,12 +133,14 @@
   width: 230px;
   overflow-y: scroll;
   right: 0;
+  position: fixed;
 }
 
 .l-sidebar-toggle {
   *zoom: 1; /* IE 7 and below hack */
   width: 20px;
   right: 230px;
+  position: fixed;
 }
 
 .tabledrag-toggle-weight-wrapper {
@@ -173,7 +185,7 @@
   left: 30%;
 }
 
-.ion-android-information .tabledrag-changed {
+.ion-alert-circled .tabledrag-changed {
   margin-left: 4px;
 }
 
