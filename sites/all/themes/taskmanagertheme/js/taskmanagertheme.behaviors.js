@@ -24,7 +24,7 @@
   };
 
   Drupal.theme.prototype.tableDragChangedMarker = function () {
-    return '<span class="ion-ios7-information-outline warning tabledrag-changed"></span>';
+    return '<span class="ion-android-information warning tabledrag-changed"></span>';
   };
   // TODO: remove tableDragChangedMarker after save
 
@@ -64,11 +64,18 @@
       // hidding Save button for tabledrag list
       $('#edit-actions').toggleClass('ninja');
 
-        // PLACING TABLEDRAG HANDLE
+      // placing tabledrag handle
       $('.tabledrag-handle', context).once('tmt-init', function () {
         // handle
         var $handle = $('.tabledrag-handle .handle');
         $handle.replaceWith('<i class="ion ion-ios7-more"></i>');
+      });
+
+      // placing 'Add a new task' icon
+      $('#block-views-columns-backlog', context).once('tmt-init', function () {
+        // header
+        var $header = $('.view-header a');
+        $header.prepend('<i class="ion ion-plus"></i>');
       });
 
       // SIDEBAR SCROLL
@@ -117,16 +124,13 @@
         var $task = $('#draggableviews-table-columns-backlog tr.draggable');
         // initially hidden
         $task.find('.ion-ios7-more').hide();
-        $task.find('.views-field-title a').css('margin-left', '10px');
         // hover
         $task.hover(
           function () {
             $(this).find('.ion-ios7-more').show();
-            $(this).find('.views-field-title a').css('margin-left', '0');
           }, 
           function () {
             $(this).find('.ion-ios7-more').hide();
-            $(this).find('.views-field-title a').css('margin-left', '10px');
           }
         );
       });
