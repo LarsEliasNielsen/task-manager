@@ -263,7 +263,7 @@ function views_feature_views_default_views() {
   $handler->display->display_options['fields']['field_state']['table'] = 'field_data_field_state';
   $handler->display->display_options['fields']['field_state']['field'] = 'field_state';
   $handler->display->display_options['fields']['field_state']['label'] = '';
-  $handler->display->display_options['fields']['field_state']['element_class'] = 'Current';
+  $handler->display->display_options['fields']['field_state']['element_class'] = 'Started';
   $handler->display->display_options['fields']['field_state']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_state']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Content: Deadline */
@@ -608,7 +608,7 @@ function views_feature_views_default_views() {
   $handler->display->display_options['fields']['timestamp']['field'] = 'timestamp';
   $handler->display->display_options['fields']['timestamp']['label'] = '';
   $handler->display->display_options['fields']['timestamp']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['timestamp']['alter']['text'] = 'was updated [timestamp]';
+  $handler->display->display_options['fields']['timestamp']['alter']['text'] = 'updated [timestamp]';
   $handler->display->display_options['fields']['timestamp']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['timestamp']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['timestamp']['element_label_colon'] = FALSE;
@@ -642,7 +642,7 @@ function views_feature_views_default_views() {
   $handler->display->display_options['fields']['revert_revision']['id'] = 'revert_revision';
   $handler->display->display_options['fields']['revert_revision']['table'] = 'node_revision';
   $handler->display->display_options['fields']['revert_revision']['field'] = 'revert_revision';
-  $handler->display->display_options['fields']['revert_revision']['label'] = ', ';
+  $handler->display->display_options['fields']['revert_revision']['label'] = '-';
   $handler->display->display_options['fields']['revert_revision']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['revert_revision']['hide_empty'] = TRUE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
