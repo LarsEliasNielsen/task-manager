@@ -6,6 +6,17 @@
   min-width: 720px;
 }
 
+.l-header:after,
+.l-menu:after,
+.l-main:after,
+.l-column-container:after,
+.l-sidebar:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/*  HEADER  */
 .l-header {
   *zoom: 1; /* IE 7 and below hack */
   max-width: 100%;
@@ -22,15 +33,21 @@
   width: 100%;
 }
 
+/*  MAIN  */
 .l-main {
   *zoom: 1; /* IE 7 and below hack */
   padding-right: 250px; /* sidebar testing */
 }
 
+/*  COLUMNS  */
 .l-main .l-column-container {
   *zoom: 1; /* IE 7 and below hack */
   _width: 1190px; /* IE 6 and below hack */
   margin: 0 auto;
+}
+
+#main .l-region--column01 {
+  position: relative;
 }
 
 .l-main .l-column-container .l-region--column01,
@@ -40,6 +57,31 @@
   width: 33.3333%;
 }
 
+#main .l-region--column01 .view-columns .view-empty,
+#main .l-region--column02 .view-columns .view-empty,
+#main .l-region--column03 .view-columns .view-empty {
+  padding-left: 25px;
+}
+
+/*  COLUMNS HEADER  */
+#main .l-region--column01 .view-columns .view-header ul {
+  padding: 0;
+  margin: 0;
+}
+
+#main .l-region--column01 .view-columns .view-header ul li {
+  position: absolute;
+  top: 25px;
+  right: 22px;
+}
+
+#main .l-region--column01 h2.block__title,
+#main .l-region--column02 h2.block__title,
+#main .l-region--column03 h2.block__title {
+  padding-left: 25px;
+}
+
+/*  COLUMNS LISTS/TABLE ROWS  */
 .l-main .l-column-container .view-display-id-backlog .views-table {
   width: 100%;
 }
@@ -49,13 +91,33 @@
   display: block;
 }
 
-.l-main .l-column-container .view-display-id-backlog .views-table tr,
+#main .l-region--column01 .view-columns .view-content #draggableviews-table-columns-backlog tr,
 .l-main .l-column-container .view-display-id-current .views-row,
 .l-main .l-column-container .view-display-id-done .views-row {
   width: 95%;
   margin: 1px auto;
+  padding: 4px;
 }
 
+/*  TASKS  */
+
+/*  TASK TITLES  */
+#main .l-region--column01 .view-columns .view-content #draggableviews-table-columns-backlog tr td.views-field-title a[href*=task] {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+#main .l-region--column02 .view-columns .view-content .views-row .views-field-title a,
+#main .l-region--column03 .view-columns .view-content .views-row .views-field-title a {
+  display: block;
+}
+
+#main .l-region--column02 .view-columns .view-content .views-row .views-field-title,
+#main .l-region--column03 .view-columns .view-content .views-row .views-field-title {
+  padding-left: 10px;
+}
+
+/*  SIDEBAR  */
 .l-sidebar {
   *zoom: 1; /* IE 7 and below hack */
   width: 230px;
@@ -63,35 +125,60 @@
   right: 0;
 }
 
-.views-field-title a {
-  margin-left: 10px;
-}
-
 .l-sidebar-toggle {
   *zoom: 1; /* IE 7 and below hack */
   width: 20px;
   right: 230px;
-  cursor: pointer;
-}
-
-.ion-chevron-up {
-  margin: auto;
-  position: absolute;
-  top: 40%; left: 30%;
 }
 
 .tabledrag-toggle-weight-wrapper {
   display: none; /* hide "Show row weights" */
 }
 
-.l-header:after,
-.l-menu:after,
-.l-main:after,
-.l-column-container:after,
-.l-sidebar:after {
-  content: "";
-  display: table;
-  clear: both;
+#block-views-revision-history-history .views-row {
+  padding: 5px 5px 5px 10px;
+}
+
+#block-views-revision-history-history .views-row .views-field-title-1,
+#block-views-revision-history-history .views-row .views-field-revert-revision {
+  display: inline-block;
+}
+
+/*  SIDEBAR HEADER  */
+#block-views-revision-history-history h2.block__title {
+  padding-left: 5px;
+}
+
+/*  STATES  */
+#block-views-revision-history-history .views-field-field-state-revision-id .Not-started,
+#block-views-revision-history-history .views-field-field-state-revision-id .Started,
+#block-views-revision-history-history .views-field-field-state-revision-id .Needs-review,
+#block-views-revision-history-history .views-field-field-state-revision-id .Done,
+#main .l-region--column01 .view-columns .view-content #draggableviews-table-columns-backlog tr td.views-field-field-state,
+#main .l-region--column02 .view-columns .view-content .views-row .views-field-field-state .field-content,
+#main .l-region--column03 .view-columns .view-content .views-row .views-field-field-state .field-content {
+  padding: 2px 4px;
+  display: inline-block;
+}
+
+#main .l-region--column01 .view-columns .view-content #draggableviews-table-columns-backlog tr td.views-field-field-state {
+  margin-left: 10px;
+}
+
+/*  IONICONS STYLING  */
+.ion-chevron-up {
+  margin: auto;
+  position: absolute;
+  top: 40%;
+  left: 30%;
+}
+
+.ion-android-information .tabledrag-changed {
+  margin-left: 4px;
+}
+
+.view-header .ion-plus {
+  margin-right: 3px;
 }
 
 /*******************************************************************************
