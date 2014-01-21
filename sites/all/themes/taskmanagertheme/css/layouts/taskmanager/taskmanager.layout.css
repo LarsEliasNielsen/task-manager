@@ -33,6 +33,10 @@
   width: 100%;
 }
 
+.login-link {
+  float: right;
+}
+
 /*  MAIN  */
 .l-main {
   *zoom: 1; /* IE 7 and below hack */

@@ -198,3 +198,7 @@ body {
   -ms-transform: rotate(90deg);
   transform: rotate(90deg);
 }
+
+.ion-log-out {
+  font-size: 32px;
+}
