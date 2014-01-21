@@ -21,6 +21,13 @@
     <?php endif; ?>
     <div class="l-menu" role="">
       <?php print render($page['menu']); ?>
+
+      <?php global $user; ?>
+      <?php if ($user->uid) : ?>
+        <a class="login-link" href="/user/logout"><i class="ion ion-log-out"></i><span>Log out</span></a>
+      <?php else : ?>
+        <a class="login-link" href="/user"><i class="ion ion-log-in"></i><span>Login</span></a>
+      <?php endif; ?>
     </div>
   </header>
 
