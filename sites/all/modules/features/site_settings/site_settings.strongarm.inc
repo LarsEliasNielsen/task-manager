@@ -84,6 +84,15 @@ function site_settings_strongarm() {
     'users/*' => array(
       'width' => '700px',
     ),
+    'user' => array(
+      'width' => '700px',
+    ),
+    'user/register' => array(
+      'width' => '700px',
+    ),
+    'user/password' => array(
+      'width' => '700px',
+    ),
   );
   $export['overlay_paths_ui_paths'] = $strongarm;
 
@@ -96,7 +105,10 @@ function site_settings_strongarm() {
     'visibility' => '1',
     'pages' => 'task/*
 node/*
-users/*',
+users/*
+user
+user/register
+user/password',
   );
   $export['overlay_theme'] = $strongarm;
 
