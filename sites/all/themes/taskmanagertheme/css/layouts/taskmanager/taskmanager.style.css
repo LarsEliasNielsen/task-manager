@@ -16,7 +16,7 @@ body {
 
 /*  MAIN  */
 .messages {
-  margin: 8px 10px;
+  color: #4d4d4d;
 }
 
 /*  COLUMNS  */
@@ -43,8 +43,13 @@ body {
 #main .l-region--column03 h2.block__title {
   font-weight: normal;
   background-color: #f2f2f2;
-  padding: 10px 10px 10px 12px;
-  margin: 8px 10px;
+  border: 1px solid #bdbab2;
+}
+
+/*  TABLEDRAG WARNING  */
+.tabledrag-changed-warning {
+  font-weight: normal;
+  background-color: #f2f2f2;
   border: 1px solid #bdbab2;
 }
 

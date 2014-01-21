@@ -16,15 +16,25 @@
     // $tabledragWarning.attr('id', 'draggable-changed');
     $tabledragWarning.addClass('tabledrag-changed-warning messages warning');
 
-    $tabledragWarning.append(Drupal.theme('tableDragChangedMarker') + '' + Drupal.t('Click \'Save\' to apply new order.'));
+    $tabledragWarning.append(Drupal.theme('tableDragChangedMarker'));
+    $tabledragWarning.append('<div class="tabledrag-changed text">' + Drupal.t('Save changes?') + '</div>');
     $tabledragWarning.append($('#edit-actions'));
     $('#edit-actions').toggleClass('ninja');
+
+    $backlogTitle = $('#block-views-columns-backlog h2');
+    // $warningWidth = $backlogTitle.outerWidth()
+    // $warningHeight = $backlogTitle.outerHeight();
+
+    // $tabledragWarning.css({ 'height':$warningHeight, 'width':$warningWidth });
+    $('#block-views-columns-backlog .view-header').hide();
+
+    $backlogTitle.replaceWith($tabledragWarning);
 
     return $tabledragWarning;
   };
 
   Drupal.theme.prototype.tableDragChangedMarker = function () {
-    return '<span class="ion-alert-circled warning tabledrag-changed"></span>';
+    return '<div class="ion-alert-circled warning tabledrag-changed"></div>';
   };
   // TODO: remove tableDragChangedMarker after save
 
