@@ -69,6 +69,27 @@ function site_settings_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'jquery_update_compression_type';
+  $strongarm->value = 'min';
+  $export['jquery_update_compression_type'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'jquery_update_jquery_cdn';
+  $strongarm->value = 'google';
+  $export['jquery_update_jquery_cdn'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'jquery_update_jquery_version';
+  $strongarm->value = '1.8';
+  $export['jquery_update_jquery_version'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'overlay_paths_ui_paths';
   $strongarm->value = array(
     'task/*' => array(
@@ -84,6 +105,15 @@ function site_settings_strongarm() {
     'users/*' => array(
       'width' => '700px',
     ),
+    'user' => array(
+      'width' => '700px',
+    ),
+    'user/register' => array(
+      'width' => '700px',
+    ),
+    'user/password' => array(
+      'width' => '700px',
+    ),
   );
   $export['overlay_paths_ui_paths'] = $strongarm;
 
@@ -96,7 +126,10 @@ function site_settings_strongarm() {
     'visibility' => '1',
     'pages' => 'task/*
 node/*
-users/*',
+users/*
+user
+user/register
+user/password',
   );
   $export['overlay_theme'] = $strongarm;
 
@@ -125,14 +158,14 @@ users/*',
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_taxonomy_term_state_pattern';
-  $strongarm->value = 'state/[current-page:title]';
+  $strongarm->value = '';
   $export['pathauto_taxonomy_term_state_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_taxonomy_term_tags_pattern';
-  $strongarm->value = 'tag/[current-page:title]';
+  $strongarm->value = '';
   $export['pathauto_taxonomy_term_tags_pattern'] = $strongarm;
 
   $strongarm = new stdClass();

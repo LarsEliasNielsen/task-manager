@@ -1,0 +1,6 @@
+name = "Custom jQuery Update"
+description = "Custom module for running jQuery 1.5 backend, and newest version frontend."
+core = "7.x"
+package = "Custom"
+
+dependencies[] = jquery_update

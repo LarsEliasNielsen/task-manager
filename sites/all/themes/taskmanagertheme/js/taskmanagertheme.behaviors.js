@@ -16,15 +16,25 @@
     // $tabledragWarning.attr('id', 'draggable-changed');
     $tabledragWarning.addClass('tabledrag-changed-warning messages warning');
 
-    $tabledragWarning.append(Drupal.theme('tableDragChangedMarker') + '' + Drupal.t('Click \'Save\' to apply new order.'));
+    $tabledragWarning.append(Drupal.theme('tableDragChangedMarker'));
+    $tabledragWarning.append('<div class="tabledrag-changed text">' + Drupal.t('Save changes?') + '</div>');
     $tabledragWarning.append($('#edit-actions'));
     $('#edit-actions').toggleClass('ninja');
+
+    $backlogTitle = $('#block-views-columns-backlog h2');
+    // $warningWidth = $backlogTitle.outerWidth()
+    // $warningHeight = $backlogTitle.outerHeight();
+
+    // $tabledragWarning.css({ 'height':$warningHeight, 'width':$warningWidth });
+    $('#block-views-columns-backlog .view-header').hide();
+
+    $backlogTitle.replaceWith($tabledragWarning);
 
     return $tabledragWarning;
   };
 
   Drupal.theme.prototype.tableDragChangedMarker = function () {
-    return '<span class="ion-android-information warning tabledrag-changed"></span>';
+    return '<div class="ion-alert-circled warning tabledrag-changed"></div>';
   };
   // TODO: remove tableDragChangedMarker after save
 
@@ -96,25 +106,95 @@
         $mainHeight = $('#main').height();
 
         // initial styling
-        $('#sidebar').css({ 'position':'absolute', 'top':$topHeight, 'height':$sidebarHeight });
-        $('#sidebar-toggle').css({ 'position':'absolute', 'top':$topHeight, 'height':$sidebarHeight });
+        $('#sidebar').css({ 'top':$topHeight, 'height':$sidebarHeight });
+        $('#sidebar-toggle').css({ 'top':$topHeight, 'height':$sidebarHeight });
 
         // use scroll function when #main is long enough
         if ($mainHeight >= $sidebarHeight) {
           $(window).scroll(function () {
             $windowScroll = $(window).scrollTop();
-            if ($windowScroll <= 118) {
-              $('#sidebar').css({ 'position':'absolute', 'top':$topHeight, 'height':($sidebarHeight+$windowScroll) });
-              $('#sidebar-toggle').css({ 'position':'absolute', 'top':$topHeight, 'height':($sidebarHeight+$windowScroll) });
+            if ($windowScroll < 0) {
+              $windowScroll = 0;
+            }
+            if ($windowScroll >= 0 && $windowScroll < 118) {
+              $('#sidebar').css({ 'top':$topHeight-$windowScroll, 'height':($sidebarHeight+$windowScroll) });
+              $('#sidebar-toggle').css({ 'top':$topHeight-$windowScroll, 'height':($sidebarHeight+$windowScroll) });
             } else {
-              $('#sidebar').css({ 'position':'fixed', 'top':$fixedTopHeight, 'height':($viewportHeight) });
-              $('#sidebar-toggle').css({ 'position':'fixed', 'top':$fixedTopHeight, 'height':($viewportHeight) });
+              $('#sidebar').css({ 'top':$fixedTopHeight, 'height':($viewportHeight) });
+              $('#sidebar-toggle').css({ 'top':$fixedTopHeight, 'height':($viewportHeight) });
             }
           });
         }
       });
     }
   }
+
+  Drupal.behaviors.userCookie = {
+    attach: function(context, settings) {
+      // if user is logged in
+      if (Drupal.settings.user_js_uid > 0) {
+        // GET COOKIE VALUE FUNCTION
+        function getCookieValue(name) {
+          var reg = new RegExp(name + "=([^;]+)");
+          var value = reg.exec(document.cookie);
+          return (value != null) ? unescape(value[1]) : null;
+        }
+
+        // INITIAL RUN
+        // if cookie is set
+        if ($.cookie('sidebar_pin_'+Drupal.settings.user_js_uid)) {
+          // reading user cookie
+          $cookieValue = getCookieValue('sidebar_pin_'+Drupal.settings.user_js_uid);
+        } else {
+          // setting user cookie
+          $.cookie('sidebar_pin_'+Drupal.settings.user_js_uid, '1', { path: '/', expires: 365 });
+          $cookieValue = "1";
+        }
+
+        // CREATING INPUT AND LABEL
+        $form = $('<form></form>');
+        $checkbox = $('<input>');
+        $checkbox.attr('type', 'checkbox');
+        $checkboxID = 'sidebar-checkbox';
+        $checkbox.attr('id', $checkboxID);
+        $checkbox.addClass('sidebar-checkbox');
+
+        $label = $('<label></label>');
+        $label.attr('for', $checkboxID);
+        $label.addClass('sidebar-label');
+        $label.attr('title', 'Pin sidebar');
+
+        // SETTING AND READING VALUE
+        $checkbox.attr('value', $cookieValue);
+        if($checkbox.val() == true) {
+          $checkbox.prop('checked', true);
+          $label.attr('checked', true);
+          $('#sidebar').removeClass('sidebar-collapsed');
+        } else {
+          $checkbox.prop('checked', false);
+          $label.attr('checked', false);
+          $('#sidebar').addClass('sidebar-collapsed');
+        }
+
+        // APPENDING TO BLOCK WRAPPER
+        $sidebarContainer = $('#sidebar .block--views-revision-history-history');
+        $form.append($checkbox);
+        $label.append('<i class="ion ion-pin"></i>');
+        $form.append($label);
+        $sidebarContainer.append($form);
+
+        // ON CHANGE
+        $($checkbox).change(function(){
+          if ($(this).is(':checked')) {
+            $newValue = "1";
+          } else {
+            $newValue = "0";
+          }
+          $.cookie('sidebar_pin_'+Drupal.settings.user_js_uid, $newValue, { path: '/', expires: 365 });
+        });
+      }
+    }
+  };
 
   Drupal.behaviors.taskmanagerthemeHover = {
     attach: function (context, settings) {
@@ -138,35 +218,48 @@
   }
 
   Drupal.behaviors.taskmanagerthemeSidebar = {
-
     attach: function (context, settings) {
       $('#sidebar', context).once('tmt-sidebar', function () {
+        // SETTING ELEMENT VARIABLES
+          var $sidebar = $('#sidebar');
+          var $sidebartoggle = $('#sidebar-toggle');
+          var $main = $('#main');
+          var $rotate = $('#ion-chevron-up');
+
+        // INITIAL
+        if ($sidebar.hasClass('sidebar-collapsed')) {
+          $sidebar.css({ 'right':'-230px' });
+          $sidebartoggle.css({ 'right':'0' });
+          $main.css({ 'padding-right':'0' });
+          $rotate.toggleClass('icon-rotate');
+        }
+
         // CLICK
         $('#sidebar-toggle').click(function() {
           // sidebar
-          var $sidebar = $('#sidebar');
           $sidebar.animate({
             right: parseInt($sidebar.css('right'),10) == 0 ?
-              -$sidebar.outerWidth() :
+              -$sidebar.outerWidth(true) :
               0
           }, 100);
+          $sidebar.toggleClass('sidebar-collapsed');
+
           // sidebartoggle
-          var $sidebartoggle = $('#sidebar-toggle');
           $sidebartoggle.animate({
             right: parseInt($sidebartoggle.css('right'),10) == 0 ?
-              230 :
+              $sidebar.outerWidth(true) :
               0
           }, 100);
+
           // main
-          var $main = $('#main');
           $main.animate({
             paddingRight: parseInt($main.css('padding-right'),10) == 0 ?
               250 :
               0
           }, 100);
+
           // rotate
-          var $rotate = $('#ion-chevron-up');
-          $rotate.toggleClass('sidebar-collapsed');
+          $rotate.toggleClass('icon-rotate');
         });
       });
     }

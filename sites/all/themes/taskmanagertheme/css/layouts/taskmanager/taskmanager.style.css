@@ -16,7 +16,7 @@ body {
 
 /*  MAIN  */
 .messages {
-  margin: 8px 10px;
+  color: #4d4d4d;
 }
 
 /*  COLUMNS  */
@@ -43,21 +43,14 @@ body {
 #main .l-region--column03 h2.block__title {
   font-weight: normal;
   background-color: #f2f2f2;
-  padding: 10px 10px 10px 12px;
-  margin: 8px 10px;
   border: 1px solid #bdbab2;
 }
 
-/*  TASKS  */
-#main .l-region--column01 .view-columns .view-content #draggableviews-table-columns-backlog tr {
-  position: relative;
-}
-
-/*  TASK TITLES/HANDLES  */
-#main .l-region--column01 .view-columns .view-content #draggableviews-table-columns-backlog tr td.views-field-title .tabledrag-handle {
-  position: absolute;
-  left: 5px;
-  top: 5px;
+/*  TABLEDRAG WARNING  */
+.tabledrag-changed-warning {
+  font-weight: normal;
+  background-color: #f2f2f2;
+  border: 1px solid #bdbab2;
 }
 
 /*  TASK DETAILS  */
@@ -94,14 +87,6 @@ body {
   background: -ms-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.25) 100%);
   background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.25) 100%);
   cursor: pointer;
-}
-
-.sidebar-collapsed {
-  -moz-transform: rotate(-90deg);
-  -webkit-transform: rotate(-90deg);
-  -o-transform: rotate(-90deg);
-  -ms-transform: rotate(-90deg);
-  transform: rotate(-90deg);
 }
 
 .l-sidebar .view-revision-history .views-row,
@@ -144,6 +129,15 @@ body {
   color: #000000;
   border: 1px solid #bdbab2;
   padding: 10px 10px 10px 8px;
+}
+
+.sidebar-checkbox + label {
+  color: #a1a1a1;
+  font-size: 25px;
+}
+
+.sidebar-checkbox:checked + label {
+  color: green;
 }
 
 /*  STATES  */
@@ -195,11 +189,25 @@ body {
   transform: rotate(90deg);
 }
 
+.icon-rotate {
+  color: #808080;
+  -moz-transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+
 .ion-ios7-more {
   color: #808080;
+  font-size: 25px;
   -moz-transform: rotate(90deg);
   -webkit-transform: rotate(90deg);
   -o-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
   transform: rotate(90deg);
+}
+
+.ion-log-out {
+  font-size: 32px;
 }
