@@ -131,6 +131,15 @@ body {
   padding: 10px 10px 10px 8px;
 }
 
+.sidebar-checkbox + label {
+  color: #a1a1a1;
+  font-size: 25px;
+}
+
+.sidebar-checkbox:checked + label {
+  color: green;
+}
+
 /*  STATES  */
 #block-views-revision-history-history .views-field-field-state-revision-id .Not-started,
 #block-views-revision-history-history .views-field-field-state-revision-id .Started,
