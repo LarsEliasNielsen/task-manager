@@ -129,6 +129,78 @@
     }
   }
 
+  Drupal.behaviors.userCookie = {
+    attach: function(context, settings) {
+      // if user is logged in
+      if (Drupal.settings.user_js_uid > 0) {
+        // GET COOKIE VALUE FUNCTION
+        function getCookieValue(name) {
+          var reg = new RegExp(name + "=([^;]+)");
+          var value = reg.exec(document.cookie);
+          return (value != null) ? unescape(value[1]) : null;
+        }
+
+        // INITIAL RUN
+        // if cookie is set
+        if ($.cookie('sidebar_pin_'+Drupal.settings.user_js_uid)) {
+          // reading user cookie
+          $cookieValue = getCookieValue('sidebar_pin_'+Drupal.settings.user_js_uid);
+          console.log('cookie is set: '+$cookieValue);
+        } else {
+          // setting user cookie
+          $.cookie('sidebar_pin_'+Drupal.settings.user_js_uid, '1', { path: '/', expires: 365 });
+          $cookieValue = "1";
+          console.log('cookie is not set');
+        }
+
+        // CREATING INPUT AND LABEL
+        $form = $('<form></form>');
+        $checkbox = $('<input>');
+        $checkbox.attr('type', 'checkbox');
+        $checkboxID = 'sidebar-checkbox';
+        $checkbox.attr('id', $checkboxID);
+        $checkbox.addClass('sidebar-checkbox');
+
+        $label = $('<label></label>');
+        $label.attr('for', $checkboxID);
+        $label.addClass('sidebar-label');
+        $label.attr('title', 'Pin sidebar');
+
+        // SETTING AND READING VALUE
+        $checkbox.attr('value', $cookieValue);
+        if($checkbox.val() == true) {
+          $checkbox.prop('checked', true);
+          $label.attr('checked', true);
+          $('#sidebar').removeClass('sidebar-collapsed');
+          console.log('checked true');
+        } else {
+          $checkbox.prop('checked', false);
+          $label.attr('checked', false);
+          $('#sidebar').addClass('sidebar-collapsed');
+          console.log('checked false');
+        }
+
+        // APPENDING TO BLOCK WRAPPER
+        $sidebarContainer = $('#sidebar .block--views-revision-history-history');
+        $form.append($checkbox);
+        $label.append('<i class="ion ion-pin"></i>');
+        $form.append($label);
+        $sidebarContainer.append($form);
+
+        // ON CHANGE
+        $($checkbox).change(function(){
+          if ($(this).is(':checked')) {
+            $newValue = "1";
+          } else {
+            $newValue = "0";
+          }
+          $.cookie('sidebar_pin_'+Drupal.settings.user_js_uid, $newValue, { path: '/', expires: 365 });
+          console.log('new cookie: '+$newValue);
+        });
+      }
+    }
+  };
+
   Drupal.behaviors.taskmanagerthemeHover = {
     attach: function (context, settings) {
 
@@ -172,7 +244,7 @@
           // sidebar
           $sidebar.animate({
             right: parseInt($sidebar.css('right'),10) == 0 ?
-              -$sidebar.outerWidth() :
+              -$sidebar.outerWidth(true) :
               0
           }, 100);
           $sidebar.toggleClass('sidebar-collapsed');
@@ -180,7 +252,7 @@
           // sidebartoggle
           $sidebartoggle.animate({
             right: parseInt($sidebartoggle.css('right'),10) == 0 ?
-              $sidebar.outerWidth() :
+              $sidebar.outerWidth(true) :
               0
           }, 100);
 
