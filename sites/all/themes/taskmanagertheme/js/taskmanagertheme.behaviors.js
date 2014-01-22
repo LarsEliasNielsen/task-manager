@@ -145,12 +145,10 @@
         if ($.cookie('sidebar_pin_'+Drupal.settings.user_js_uid)) {
           // reading user cookie
           $cookieValue = getCookieValue('sidebar_pin_'+Drupal.settings.user_js_uid);
-          console.log('cookie is set: '+$cookieValue);
         } else {
           // setting user cookie
           $.cookie('sidebar_pin_'+Drupal.settings.user_js_uid, '1', { path: '/', expires: 365 });
           $cookieValue = "1";
-          console.log('cookie is not set');
         }
 
         // CREATING INPUT AND LABEL
@@ -172,12 +170,10 @@
           $checkbox.prop('checked', true);
           $label.attr('checked', true);
           $('#sidebar').removeClass('sidebar-collapsed');
-          console.log('checked true');
         } else {
           $checkbox.prop('checked', false);
           $label.attr('checked', false);
           $('#sidebar').addClass('sidebar-collapsed');
-          console.log('checked false');
         }
 
         // APPENDING TO BLOCK WRAPPER
@@ -195,7 +191,6 @@
             $newValue = "0";
           }
           $.cookie('sidebar_pin_'+Drupal.settings.user_js_uid, $newValue, { path: '/', expires: 365 });
-          console.log('new cookie: '+$newValue);
         });
       }
     }
