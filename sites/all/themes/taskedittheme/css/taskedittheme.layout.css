@@ -1,0 +1,54 @@
+#overlay {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#overlay-close-bg {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+/*  SUB-TASKS  */
+.field-type-field-collection table {
+  width: 100%;
+}
+
+.tabledrag-toggle-weight-wrapper {
+  display: none; /* hide "Show row weights" */
+}
+
+/*  CHECKBOXES  */
+.draggable .form-type-checkbox {
+  float: left;
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.draggable .form-type-checkbox input {
+  display: none;
+}
+
+/*  TEXTFIELDS  */
+.draggable .field-type-text {
+  display: inline-block;
+}
+
+.draggable .form-type-textfield label {
+  display: none;
+}
+
+.draggable .form-type-textfield input {
+  width: 500px;
+}
