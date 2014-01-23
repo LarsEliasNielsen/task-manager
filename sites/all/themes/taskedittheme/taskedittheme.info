@@ -11,7 +11,9 @@ core = 7.x
 stylesheets[all][] = css/taskedittheme.normalize.css
 stylesheets[all][] = css/taskedittheme.hacks.css
 stylesheets[all][] = css/taskedittheme.styles.css
+stylesheets[all][] = css/taskedittheme.layout.css
 stylesheets[all][] = css/taskedittheme.no-query.css
+stylesheets[all][] = css/ionicons.css
 
 ; ========================================
 ; Scripts
