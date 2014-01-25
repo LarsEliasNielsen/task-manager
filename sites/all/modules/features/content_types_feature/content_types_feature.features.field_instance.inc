@@ -262,8 +262,7 @@ function content_types_feature_field_default_field_instances() {
     'bundle' => 'task',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Add existing or new tags to your task,
-eg. \'front-end\', \'back-end\', \'need-to-have\' or \'nice-to-have\'.',
+    'description' => 'Add tags to your task, separated by commas.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -301,8 +300,7 @@ eg. \'front-end\', \'back-end\', \'need-to-have\' or \'nice-to-have\'.',
   // Translatables
   // Included for use with string extractors like potx.
   t('Add a description of the task');
-  t('Add existing or new tags to your task,
-eg. \'front-end\', \'back-end\', \'need-to-have\' or \'nice-to-have\'.');
+  t('Add tags to your task, separated by commas.');
   t('Completed');
   t('Deadline');
   t('Description');
