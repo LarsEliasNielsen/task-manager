@@ -6,22 +6,205 @@ img, media {
   max-width: 100%;
 }
 
-#overlay-close-bg {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  overflow: hidden;
+/* TITLE */
+#overlay-content h1 {
+  font-size: 24px;
+  font-weight: normal;
 }
 
-#overlay {
-  position: absolute;
-  top: 60px;
-  right: 0;
-  left: 0;
-  margin-left: auto;
-  margin-right: auto;
+#overlay-content h1 em {
+  color: #cdcdcd;
+}
+
+/* BUTTONS */
+input[type=submit],
+input[type=button],
+input[type=reset] {
+  background: #c8c8c8;
+  color: #ffffff;
+  border: 0;
+}
+
+input[type=submit]:hover,
+input[type=button]:hover,
+input[type=reset]:hover {
+  background: #b8b8b8;
+}
+
+/* OVERLAY LINKS */
+#overlay a,
+#overlay a:active {
+  color: #191919;
+}
+
+#overlay a:hover {
+  color: #4d4d4d;
+}
+
+/* INPUT STYLING */
+#overlay input[type=text],
+#overlay textarea {
+  border: 1px solid #cdcdcd;
+}
+
+/* HANDLE ON TEXTAREA */
+#overlay .resizable-textarea .grippie {
+  background: #ffffff url('../../omega/omega/images/misc/grippie.png?1384945445') no-repeat center 2px;
+  border-color: #cdcdcd;
+}
+
+#overlay .resizable-textarea .grippie:hover {
+  background: #d8d8d8 url('../../omega/omega/images/misc/grippie.png?1384945445') no-repeat center 2px;
+}
+
+/* FORM ACTION BUTTONS */
+#overlay #edit-submit {
+  background: #8a9b0f;
+  color: #ffffff;
+  border: none;
+}
+
+#overlay #edit-submit:hover {
+  background: #707E0A;
+}
+
+#overlay #edit-delete {
+  background: #bd1550;
+  color: #ffffff;
+  border: none;
+}
+
+#overlay #edit-delete:hover {
+  background: #8E0B39;
+}
+
+/* STATES */
+#edit-field-state input[type=radio] + label {
+  background-color: #f8f8f8;
+  border-color: #ddd;
+  cursor: pointer;
+  border: 1px solid #cdcdcd;
+}
+
+#edit-field-state input[type=radio]:checked + label { 
+  background-image: none;
+  background-color: #d8d8d8;
+  color: #ffffff;
+}
+
+#edit-field-state input[type=radio]#edit-field-state-und-1:checked + label {
+  background-color: #bd1550;        /* Not started */
+}
+
+#edit-field-state input[type=radio]#edit-field-state-und-2:checked + label {
+  background-color: #e97f02;        /* Started */
+}
+
+#edit-field-state input[type=radio]#edit-field-state-und-3:checked + label {
+  background-color: #f8ca00;        /* Needs review */
+}
+
+#edit-field-state input[type=radio]#edit-field-state-und-4:checked + label {
+  background-color: #8a9b0f;        /* Done */
+}
+
+/* DATE */
+#overlay #edit-field-deadline select {
+  -webkit-appearance: none;
+  border: 1px solid #cdcdcd;
+  background: #f8f8f8;
+  border-radius: 0;
+  cursor: context-menu;
+}
+
+#overlay #edit-field-deadline select:hover {
+  background: #d8d8d8;
+}
+
+/* SUB TASKS */
+#overlay #edit-field-sub-tasks .field-multiple-table .field-label {
+  background: #ffffff;
+}
+
+#overlay #edit-field-sub-tasks .field-multiple-table tr input[type=submit] {
+  background: #bd1550;
+  color: #ffffff;
+  border: none;
+  padding: 3px 8px;
+  font-size: 14px;
+}
+
+#overlay #edit-field-sub-tasks .field-multiple-table tr input[type=submit]:hover {
+  background: #8E0B39;
+}
+
+#overlay #edit-field-sub-tasks .field-multiple-table tr.odd {
+  background: #f8f8f8;
+}
+
+#overlay #edit-field-sub-tasks .field-multiple-table tr.even {
+  background: #ffffff;
+}
+
+#overlay #edit-field-sub-tasks .tabledrag-handle .handle {
+  background: url('../../omega/omega/images/misc/draggable.png?1384945445') no-repeat 5px 3px;
+}
+
+/*  SUB-TASK CHECKBOXES  */
+.draggable .form-type-checkbox {
+  border: 1px solid #cdcdcd;
+  background: #DBE9F0;
+  color: #4A5359;
+  text-shadow: 0 1px 0 #fff;
+  font-size: 12px;
+}
+
+.draggable .form-type-checkbox:hover {
+  color: #2ED053;
+}
+
+.draggable .form-type-checkbox.active {
+  border-color: #2FAA4C;
+  background: #2ED053;
+  box-shadow: inset 0 1px 1px -1px rgba(0,0,0, .7);
+  color: #fff;
+  text-shadow: 0 1px 0 #2B9F45;
+}
+
+/* VERTICAL TABS */
+#overlay .vertical-tabs ul li {
+  background: #fbfbfb;
+}
+
+#overlay .vertical-tabs ul li:hover {
+  background: #c8c8c8 !important;
+}
+
+#overlay .vertical-tabs ul li:hover a strong,
+#overlay .vertical-tabs ul li:hover a .summary {
+  color: #ffffff;
+}
+
+#overlay .vertical-tabs ul li.selected {
+  background: #ffffff;
+}
+
+#overlay .vertical-tabs ul li a strong {
+  font-size: 12px;
+}
+
+#overlay .vertical-tabs ul li a:hover {
+  outline: 0;
+}
+
+#overlay .vertical-tabs ul li a:hover strong {
+  text-decoration: none;
+  border: 0;
+}
+
+#overlay .vertical-tabs ul li a .summary {
+  font-size: 12px;
+  color: #cdcdcd;
 }
 
 /* No files to import found in partials/components/**\/* */

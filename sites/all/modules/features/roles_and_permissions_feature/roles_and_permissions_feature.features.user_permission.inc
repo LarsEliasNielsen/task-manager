@@ -83,6 +83,17 @@ function roles_and_permissions_feature_user_default_permissions() {
     'module' => 'comment',
   );
 
+  // Exported permission: 'administer field collections'.
+  $permissions['administer field collections'] = array(
+    'name' => 'administer field collections',
+    'roles' => array(
+      'Developer' => 'Developer',
+      'Project Manager' => 'Project Manager',
+      'administrator' => 'administrator',
+    ),
+    'module' => 'field_collection',
+  );
+
   // Exported permission: 'administer taxonomy'.
   $permissions['administer taxonomy'] = array(
     'name' => 'administer taxonomy',
@@ -90,6 +101,17 @@ function roles_and_permissions_feature_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'change own username'.
+  $permissions['change own username'] = array(
+    'name' => 'change own username',
+    'roles' => array(
+      'Developer' => 'Developer',
+      'Project Manager' => 'Project Manager',
+      'administrator' => 'administrator',
+    ),
+    'module' => 'user',
   );
 
   // Exported permission: 'create task content'.
@@ -190,6 +212,8 @@ function roles_and_permissions_feature_user_default_permissions() {
   $permissions['edit terms in tags'] = array(
     'name' => 'edit terms in tags',
     'roles' => array(
+      'Developer' => 'Developer',
+      'Project Manager' => 'Project Manager',
       'administrator' => 'administrator',
     ),
     'module' => 'taxonomy',

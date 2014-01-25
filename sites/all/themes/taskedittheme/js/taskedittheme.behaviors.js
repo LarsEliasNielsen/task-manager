@@ -49,6 +49,25 @@
       // of this behavior to ignore them.
       // 'tet' is a alias for task edit theme
 
+$checkbox = $('.draggable .form-type-checkbox');
+$($checkbox, context).once('tet-init', function () {
+      // CHECKBOX
+      $checkboxIcon = $('<i></i>');
+      $checkboxIcon.addClass('ion ion-android-checkmark');
+      $(this).append($checkboxIcon);
+
+      if($(this).find('input').is(":checked")) {
+        $(this).addClass('active');
+      }
+
+      $(this).bind('click', function() {
+        $(this).toggleClass('active');
+        $input = $(this).children('input');
+        $input.attr('checked', !$input.attr('checked'));
+        console.log($input);
+      });
+      });
+
       // overlay container
       var $overlaycontainer = window.parent.document.getElementById('overlay-container');
 

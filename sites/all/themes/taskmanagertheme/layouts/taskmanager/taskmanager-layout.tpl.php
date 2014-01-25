@@ -6,19 +6,14 @@
       </a>
     <?php endif; ?>
 
-    <?php if ($site_name || $site_slogan): ?>
       <?php if ($site_name): ?>
         <h1 class="site-name">
           <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home">
-            <span><?php print $site_name; ?></span>
+            <div id="front-logo"></div>
           </a>
         </h1>
       <?php endif; ?>
 
-      <?php if ($site_slogan): ?>
-        <h2 class="site-slogan"><?php print $site_slogan; ?></h2>
-      <?php endif; ?>
-    <?php endif; ?>
     <div class="l-menu" role="">
       <?php print render($page['menu']); ?>
 

@@ -1,0 +1,118 @@
+#overlay {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#overlay-close-bg {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+/*  BUTTONS  */
+input[type=submit],
+input[type=button],
+input[type=reset] {
+  padding: 5px 15px;
+  margin: 2px;
+}
+
+/*  OVERLAY   */
+#overlay-titlebar {
+  max-width: 671px;
+}
+
+#overlay-content {
+  max-width: 671px;
+}
+
+/* INPUT STYLING */
+#overlay input[type=text],
+#overlay textarea {
+  width: 100%;
+}
+
+/* STATES */
+#edit-field-state input[type=radio] {
+  display: none; 
+  margin: 10px;
+}
+
+#edit-field-state input[type=radio] + label {
+  display: inline-block;
+  margin: -2px;
+  padding: 4px 12px;
+}
+
+/* DATE */
+#overlay #edit-field-deadline select {
+  padding: 5px 15px;
+}
+
+/* SUB TASKS */
+.field-type-field-collection table {
+  width: 100%;
+}
+
+.tabledrag-toggle-weight-wrapper {
+  display: none; /* hide "Show row weights" */
+}
+
+#overlay #edit-field-sub-tasks .field-multiple-table tr input[type=text] {
+  width: 500px;      /* Override 100% width */
+  padding: 1px 4px;
+}
+
+#overlay #edit-field-sub-tasks .field-multiple-table tr input[type=submit] {
+  padding: 3px 8px;
+}
+
+#overlay #edit-field-sub-tasks .field-multiple-table tr.draggable .form-type-checkbox {
+  margin-top: 3px;
+}
+
+#overlay #edit-field-sub-tasks .tabledrag-handle .handle {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+#overlay .vertical-tabs-panes fieldset {
+  padding-top: 1em;
+}
+
+/*  SUB-TASK CHECKBOXES  */
+.draggable .form-type-checkbox {
+  float: left;
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.draggable .form-type-checkbox input {
+  display: none;
+}
+
+/*  SUB-TASK TEXTFIELDS  */
+.draggable .field-type-text {
+  display: inline-block;
+}
+
+.draggable .form-type-textfield label {
+  display: none;
+}
+
+.draggable .form-type-textfield input {
+  width: 500px;
+}
