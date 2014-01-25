@@ -20,8 +20,17 @@
 .l-header {
   *zoom: 1; /* IE 7 and below hack */
   max-width: 100%;
-  height: 117px;
+  height: 80px;
   _width: 100%; /* IE 6 and below hack */
+}
+
+.site-name {
+  margin: 0 0 0 10px;
+}
+
+#front-logo {
+  width: 430px;
+  height: 80px;
 }
 
 .l-header .site-name,
