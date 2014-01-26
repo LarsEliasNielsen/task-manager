@@ -18,6 +18,22 @@ body {
   background: url('../../../images/task-manager-logo.png');
 }
 
+/*  LOGIN  */
+#header .l-menu a.login-link {
+  text-decoration: none;
+  color: #ffffff;
+  background: #8a9b0f;
+  border: 1px solid #cdcdcd;
+}
+
+#header .l-menu a.login-link i {
+  font-size: 32px;
+}
+
+#header .l-menu a.login-link span {
+  font-size: 16px;
+}
+
 /*  MAIN  */
 .messages {
   color: #4d4d4d;
@@ -136,12 +152,12 @@ body {
 }
 
 .sidebar-checkbox + label {
-  color: #a1a1a1;
+  color: #c3c3c3;
   font-size: 25px;
 }
 
 .sidebar-checkbox:checked + label {
-  color: green;
+  color: #8a9b0f;
 }
 
 /*  STATES  */
