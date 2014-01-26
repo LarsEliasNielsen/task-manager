@@ -42,8 +42,27 @@
   width: 100%;
 }
 
+/*  LOGIN  */
+
 .login-link {
   float: right;
+}
+
+#header .l-menu {
+  position: relative;
+}
+
+#header .l-menu a.login-link {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  padding: 5px 15px;
+}
+
+#header .l-menu a.login-link span {
+  position: relative;
+  bottom: 6px;
+  padding-left: 5px;
 }
 
 /*  MAIN  */
